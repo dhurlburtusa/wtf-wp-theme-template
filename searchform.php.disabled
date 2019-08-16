@@ -1,0 +1,23 @@
+<?php
+/**
+ * Template for displaying search forms in WTF.
+ *
+ * The `searchform.php` template is a special template expected by the
+ * `get_search_form` function.
+ *
+ * @package WordPress
+ * @subpackage WTF
+ * @since WTF 0.0.0-alpha
+ */
+?>
+<?php
+if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
+?>
+
+<form action="<?php echo esc_url( home_url( '/' ) ); ?>" class="search-form" method="get" role="search">
+	<label>
+		<span class="sr-only"><?php echo _x( 'Search for:', 'label', 'wtf' ); ?></span>
+		<input type="search" name="s" value="<?php echo get_search_query(); ?>" class="search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'wtf' ); ?>">
+	</label>
+	<button type="submit" class="btn btn--search"><span class="sr-only"><?php echo _x( 'Search', 'submit button', 'wtf' ); ?></span></button>
+</form>

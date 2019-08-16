@@ -1,0 +1,197 @@
+/*
+Theme Name: WTF
+Description: IE8 specific style.
+*/
+
+code {
+	background-color: transparent;
+	padding: 0;
+}
+
+.entry__content a,
+.entry__summary a,
+.archive__description a,
+.logged-in-as a,
+.comment-content a,
+.pingback .comment-body > a,
+.textwidget a,
+.entry__foot a:hover,
+.site-info a:hover {
+	text-decoration: underline;
+}
+
+.entry__content a:hover,
+.entry__content a:focus,
+.entry__summary a:hover,
+.entry__summary a:focus,
+.archive__description a:hover,
+.archive__description a:focus,
+.logged-in-as a:hover,
+.logged-in-as a:focus,
+.comment-content a:hover,
+.comment-content a:focus,
+.pingback .comment-body > a:hover,
+.pingback .comment-body > a:focus,
+.textwidget a:hover,
+.textwidget a:focus,
+.entry__content .wp-audio-shortcode a,
+.entry__content .wp-playlist a,
+.page-links a {
+	text-decoration: none;
+}
+
+.page {
+	margin: 21px;
+}
+
+.site-header {
+	padding-top: 3.9375em;
+	padding-bottom: 3.9375em;
+}
+
+.site-nameplate {
+	float: left;
+	margin-top: 1.3125em;
+	margin-bottom: 1.3125em;
+}
+
+.site-title {
+	font-size: 28px;
+	line-height: 1.25;
+}
+
+.site-tagline {
+	display: block;
+}
+
+.navbar-toggler {
+	float: right;
+	font-size: 16px;
+	margin: 1.3125em 0;
+	padding: 0.8125em 0.875em 0.6875em;
+}
+
+.site-header__menu {
+	clear: both;
+	margin: 0;
+	padding: 1.3125em 0;
+}
+
+.site-header .navigation--primary + .navigation--social {
+	margin-top: 2.625em;
+}
+
+.header-image {
+	margin: 1.3125em 0;
+}
+
+.pagination {
+	margin: 0 7.6923% 4.421052632em;
+}
+
+.pagination .nav-links:before,
+.pagination .nav-links:after {
+	display: none;
+}
+
+/* restore sr-only */
+.pagination .current .sr-only {
+	position: absolute !important;
+}
+
+.pagination .page-numbers {
+	display: inline-block;
+	font-weight: 400;
+}
+
+.navigation--attachments .nav-previous,
+.navigation--attachments .nav-next {
+	display: inline-block;
+}
+
+.navigation--attachments .nav-previous + .nav-next:before {
+	content: "\002f";
+	display: inline-block;
+	filter: alpha(opacity=70);
+	padding: 0 0.538461538em;
+}
+
+.entry__title {
+	font-size: 33px;
+	line-height: 1.2727272727;
+	margin-bottom: 0.8484848485em;
+}
+
+.entry__content blockquote.alignleft,
+.entry__content blockquote.alignright {
+	border-width: 4px 0 0 0;
+	padding: 0.9473684211em 0 0;
+	width: 50%;
+}
+
+.entry__foot > span:after {
+	content: "\002f";
+	display: inline-block;
+	filter: alpha(opacity=70);
+	padding: 0 0.538461538em;
+}
+
+.updated {
+	display: none;
+}
+
+.updated.published {
+	display: inline;
+}
+
+.comment-author {
+	margin-bottom: 0;
+}
+
+.comment-author .avatar {
+	height: 42px;
+	position: relative;
+	top: 0.25em;
+	width: 42px;
+}
+
+.comments-list .children > li {
+	padding-left: 1.75em;
+}
+
+.comments-list + .comment-respond {
+	padding-top: 3.5em;
+}
+
+.comment-reply-link {
+	margin-top: 0;
+}
+
+.wp-post-comments-area,
+.widget,
+.content-widgets .widget-area {
+	margin-bottom: 5.25em;
+}
+
+.page__sidebar,
+.widecolumn {
+	margin-bottom: 5.25em;
+}
+
+.site-footer .navigation--primary,
+.site-footer .navigation--social {
+	display: none;
+}
+
+.rtl .site-nameplate {
+	float: right;
+}
+
+.rtl .navbar-toggler {
+	float: left;
+}
+
+.rtl .comments-list .children > li {
+	padding-right: 1.75em;
+	padding-left: 0;
+}

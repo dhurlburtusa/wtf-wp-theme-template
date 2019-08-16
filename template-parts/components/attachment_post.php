@@ -1,0 +1,47 @@
+<?php
+/**
+ * The template part for displaying a single post attachment.
+ *
+ * @package WordPress
+ * @subpackage WTF
+ * @since WTF 0.0.0-alpha
+ */
+?>
+<?php
+if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
+?>
+
+<p>template-parts/components/attachment_post.php</p>
+
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+	<header class="entry__head">
+		<h1 class="entry__title"><?php the_title(); ?></h1>
+	</header>
+
+	<div class="entry__content">
+		<div class="entry__attachment">
+			<?php
+			wtf__the_featured_image();
+			wtf__the_excerpt();
+			?>
+		</div><!-- .entry__attachment -->
+
+		<?php
+		the_content();
+
+		wtf__the_page_links();
+
+		if ( '' !== get_the_author_meta( 'description' ) ) {
+			get_template_part( 'template-parts/components/author_biography' );
+		}
+		?>
+	</div><!-- .entry__content -->
+
+	<footer class="entry__foot">
+		<?php
+		wtf__the_post_meta();
+		wtf__the_attachment_meta();
+		wtf__the_edit_post_link();
+		?>
+	</footer>
+</article>
