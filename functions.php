@@ -37,6 +37,139 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 	require get_template_directory() . '/includes/back-compat.php';
 }
 
+/**
+ * Converts a HEX value to RGB.
+ *
+ * @since WTF 0.0.0-alpha
+ *
+ * @param string $color The original color, in 3- or 6-digit hexadecimal form.
+ * @return array Array containing RGB (red, green, and blue) values for the given
+ *               HEX code, empty array otherwise.
+ */
+function wtf__hex2rgb( $color ) {
+	$color = trim( $color, '#' );
+
+	if ( strlen( $color ) === 3 ) {
+		$r = hexdec( substr( $color, 0, 1 ) . substr( $color, 0, 1 ) );
+		$g = hexdec( substr( $color, 1, 1 ) . substr( $color, 1, 1 ) );
+		$b = hexdec( substr( $color, 2, 1 ) . substr( $color, 2, 1 ) );
+	} elseif ( strlen( $color ) === 6 ) {
+		$r = hexdec( substr( $color, 0, 2 ) );
+		$g = hexdec( substr( $color, 2, 2 ) );
+		$b = hexdec( substr( $color, 4, 2 ) );
+	} else {
+		return array();
+	}
+
+	return array(
+		'red'   => $r,
+		'green' => $g,
+		'blue'  => $b,
+	);
+}
+
+if ( ! function_exists( 'wtf__fonts_url' ) ) :
+	/**
+	 * Register Google fonts for WTF.
+	 *
+	 * Create your own `wtf__fonts_url` function to override in a child theme.
+	 *
+	 * @since WTF 0.0.0-alpha
+	 *
+	 * @return string Google fonts URL for the theme.
+	 */
+	function wtf__fonts_url() {
+		$fonts_url = '';
+		$fonts     = array();
+		$subsets   = 'latin,latin-ext';
+
+		/* translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language. */
+		if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'wtf' ) ) {
+			$fonts[] = 'Merriweather:400,700,900,400italic,700italic,900italic';
+		}
+
+		/* translators: If there are characters in your language that are not supported by Montserrat, translate this to 'off'. Do not translate into your own language. */
+		if ( 'off' !== _x( 'on', 'Montserrat font: on or off', 'wtf' ) ) {
+			$fonts[] = 'Montserrat:400,700';
+		}
+
+		/* translators: If there are characters in your language that are not supported by Inconsolata, translate this to 'off'. Do not translate into your own language. */
+		if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', 'wtf' ) ) {
+			$fonts[] = 'Inconsolata:400';
+		}
+
+		if ( $fonts ) {
+			$fonts_url = add_query_arg(
+				array(
+					'family' => urlencode( implode( '|', $fonts ) ),
+					'subset' => urlencode( $subsets ),
+				),
+				'https://fonts.googleapis.com/css'
+			);
+		}
+
+		return $fonts_url;
+	}
+endif;
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/includes/template-tags.php';
+
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/includes/customizer.php';
+
+function wtf__register_primary_sidebar () {
+	register_sidebar(
+		array(
+			'name'          => __( 'Sidebar (Primary)', 'wtf' ),
+			'id'            => 'sidebar-primary',
+			'description'   => __( 'Add widgets here to appear in the primary sidebar.', 'wtf' ),
+			// The class is prepended	with `sidebar-` and used in the Appearance > Widgets page in the WP admin.
+			'class'         => '-primary',
+			'before_widget' => '<div class="widget %2$s" id="%1$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="widget__head"><span class="widget-title">',
+			'after_title'   => '</span></div>',
+		)
+	);
+}
+
+function wtf__register_secondary_primary_sidebar () {
+	register_sidebar(
+		array(
+			'name'          => __( 'Bottom Widgets (Primary)', 'wtf' ),
+			'id'            => 'sidebar-secondary-primary',
+			'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'wtf' ),
+			// The class is prepended	with `sidebar-` and used in the Appearance > Widgets page in the WP admin.
+			'class'         => '-secondary--primary',
+			'before_widget' => '<div class="widget %2$s" id="%1$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="widget__head"><span class="widget-title">',
+			'after_title'   => '</span></div>',
+		)
+	);
+}
+
+function wtf__register_secondary_secondary_sidebar () {
+	register_sidebar(
+		array(
+			'name'          => __( 'Bottom Widgets (Secondary)', 'wtf' ),
+			'id'            => 'sidebar-secondary-secondary',
+			'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'wtf' ),
+			// The class is prepended	with `sidebar-` and used in the Appearance > Widgets page in the WP admin.
+			'class'         => '-secondary--secondary',
+			'before_widget' => '<div class="widget %2$s" id="%1$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="widget__head"><span class="widget-title">',
+			'after_title'   => '</span></div>',
+		)
+	);
+}
+
 if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 	require get_template_directory() . '/includes/debug.php';
 }
@@ -278,22 +411,6 @@ function wtf__filter__wp_resource_hints( $urls, $relation_type ) {
 }
 add_filter( 'wp_resource_hints', 'wtf__filter__wp_resource_hints', 10, 2 );
 
-function wtf__register_primary_sidebar () {
-	register_sidebar(
-		array(
-			'name'          => __( 'Sidebar (Primary)', 'wtf' ),
-			'id'            => 'sidebar-primary',
-			'description'   => __( 'Add widgets here to appear in the primary sidebar.', 'wtf' ),
-			// The class is prepended	with `sidebar-` and used in the Appearance > Widgets page in the WP admin.
-			'class'         => '-primary',
-			'before_widget' => '<div class="widget %2$s" id="%1$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget__head"><span class="widget-title">',
-			'after_title'   => '</span></div>',
-		)
-	);
-}
-
 function wtf__filter__dynamic_sidebar_params ( $params ) {
 	// TODO: Force BEM naming convention.
 	// $params[0]['before_widget'] = str_replace( 'widget_', 'widget--', $params[0]['before_widget'] );
@@ -326,38 +443,6 @@ if ( ! function_exists( 'wtf__filter__excerpt_more' ) && ! is_admin() ) :
 	add_filter( 'excerpt_more', 'wtf__filter__excerpt_more' );
 endif;
 
-function wtf__register_secondary_primary_sidebar () {
-	register_sidebar(
-		array(
-			'name'          => __( 'Bottom Widgets (Primary)', 'wtf' ),
-			'id'            => 'sidebar-secondary-primary',
-			'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'wtf' ),
-			// The class is prepended	with `sidebar-` and used in the Appearance > Widgets page in the WP admin.
-			'class'         => '-secondary--primary',
-			'before_widget' => '<div class="widget %2$s" id="%1$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget__head"><span class="widget-title">',
-			'after_title'   => '</span></div>',
-		)
-	);
-}
-
-function wtf__register_secondary_secondary_sidebar () {
-	register_sidebar(
-		array(
-			'name'          => __( 'Bottom Widgets (Secondary)', 'wtf' ),
-			'id'            => 'sidebar-secondary-secondary',
-			'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'wtf' ),
-			// The class is prepended	with `sidebar-` and used in the Appearance > Widgets page in the WP admin.
-			'class'         => '-secondary--secondary',
-			'before_widget' => '<div class="widget %2$s" id="%1$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget__head"><span class="widget-title">',
-			'after_title'   => '</span></div>',
-		)
-	);
-}
-
 if ( ! function_exists( 'wtf__action__widgets_init' ) ) :
 	/**
 	 * Registers a widget area.
@@ -376,50 +461,6 @@ if ( ! function_exists( 'wtf__action__widgets_init' ) ) :
 	}
 endif;
 add_action( 'widgets_init', 'wtf__action__widgets_init' );
-
-if ( ! function_exists( 'wtf__fonts_url' ) ) :
-	/**
-	 * Register Google fonts for WTF.
-	 *
-	 * Create your own wtf__fonts_url() function to override in a child theme.
-	 *
-	 * @since WTF 0.0.0-alpha
-	 *
-	 * @return string Google fonts URL for the theme.
-	 */
-	function wtf__fonts_url() {
-		$fonts_url = '';
-		$fonts     = array();
-		$subsets   = 'latin,latin-ext';
-
-		/* translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language. */
-		if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'wtf' ) ) {
-			$fonts[] = 'Merriweather:400,700,900,400italic,700italic,900italic';
-		}
-
-		/* translators: If there are characters in your language that are not supported by Montserrat, translate this to 'off'. Do not translate into your own language. */
-		if ( 'off' !== _x( 'on', 'Montserrat font: on or off', 'wtf' ) ) {
-			$fonts[] = 'Montserrat:400,700';
-		}
-
-		/* translators: If there are characters in your language that are not supported by Inconsolata, translate this to 'off'. Do not translate into your own language. */
-		if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', 'wtf' ) ) {
-			$fonts[] = 'Inconsolata:400';
-		}
-
-		if ( $fonts ) {
-			$fonts_url = add_query_arg(
-				array(
-					'family' => urlencode( implode( '|', $fonts ) ),
-					'subset' => urlencode( $subsets ),
-				),
-				'https://fonts.googleapis.com/css'
-			);
-		}
-
-		return $fonts_url;
-	}
-endif;
 
 /**
  * Enqueue styles for the block-based editor.
@@ -447,47 +488,6 @@ add_action( 'enqueue_block_editor_assets', 'wtf__action__enqueue_block_editor_as
 // 	return $post_templates;
 // }
 // add_filter( 'theme_page_templates', 'wtf__filter__theme_page_templates' );
-
-/**
- * Converts a HEX value to RGB.
- *
- * @since WTF 0.0.0-alpha
- *
- * @param string $color The original color, in 3- or 6-digit hexadecimal form.
- * @return array Array containing RGB (red, green, and blue) values for the given
- *               HEX code, empty array otherwise.
- */
-function wtf__hex2rgb( $color ) {
-	$color = trim( $color, '#' );
-
-	if ( strlen( $color ) === 3 ) {
-		$r = hexdec( substr( $color, 0, 1 ) . substr( $color, 0, 1 ) );
-		$g = hexdec( substr( $color, 1, 1 ) . substr( $color, 1, 1 ) );
-		$b = hexdec( substr( $color, 2, 1 ) . substr( $color, 2, 1 ) );
-	} elseif ( strlen( $color ) === 6 ) {
-		$r = hexdec( substr( $color, 0, 2 ) );
-		$g = hexdec( substr( $color, 2, 2 ) );
-		$b = hexdec( substr( $color, 4, 2 ) );
-	} else {
-		return array();
-	}
-
-	return array(
-		'red'   => $r,
-		'green' => $g,
-		'blue'  => $b,
-	);
-}
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/includes/template-tags.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/includes/customizer.php';
 
 /**
  * Add custom image sizes attribute to enhance responsive image functionality
