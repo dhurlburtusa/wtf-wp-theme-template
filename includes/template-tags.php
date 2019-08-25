@@ -23,7 +23,8 @@ if ( ! function_exists( 'wtf__the_document' ) ) :
 	 *
 	 * A different template can be used by adding a `wtf__document_tpl_slug` filter, a
 	 * `wtf__document_tpl_name` filter, or both and adding declared template in the
-	 * child theme.
+	 * child theme. Using the `wtf__document_init` action to add said filters is an
+	 * ideal location.
 	 *
 	 * Alternatively, create your own `wtf__the_document` function in a child theme to
 	 * override the default behavior.
