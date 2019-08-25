@@ -255,7 +255,7 @@ function wtf__content_width() {
 add_action( 'after_setup_theme', 'wtf__content_width', 0 );
 
 /**
- * Flushes out the transients used in `wtf__is_categorized_blog` template tag.
+ * Flushes out the transients used in `wtf__is_categorized_blog` function.
  *
  * @since WTF 0.0.0-alpha
  */
