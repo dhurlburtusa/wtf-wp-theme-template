@@ -53,6 +53,7 @@ require get_template_directory() . '/includes/customizer.php';
 
 if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 	require get_template_directory() . '/includes/debug.php';
+	do_action( 'wtf__debug' );
 }
 
 if ( ! function_exists( 'wtf__action__after_theme_setup' ) ) :
