@@ -25,6 +25,8 @@
  * @since WTF 0.0.0-alpha
  */
 
+if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
+
 /**
  * WTF only works in WordPress 4.7 or later.
  */
