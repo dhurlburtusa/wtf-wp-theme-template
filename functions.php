@@ -27,6 +27,9 @@
 
 if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 
+// Set our theme version.
+define( 'WTF__VERSION', '0.0.0-alpha' );
+
 /**
  * WTF only works in WordPress 4.7 or later.
  */
