@@ -37,6 +37,8 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 	require get_template_directory() . '/includes/back-compat.php';
 }
 
+require get_template_directory() . '/includes/polyfills.php';
+
 require get_template_directory() . '/includes/theme-functions.php';
 
 /**
