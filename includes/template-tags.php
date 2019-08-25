@@ -70,6 +70,8 @@ if ( ! function_exists( 'wtf__the_document' ) ) :
 	 * @since WTF 0.0.0-alpha
 	 */
 	function wtf__the_document () {
+		do_action( 'wtf__document_init' );
+
 		$wtf__document_tpl_slug = apply_filters( 'wtf__document_tpl_slug', 'document');
 		$wtf__document_tpl_name = apply_filters( 'wtf__document_tpl_name', null);
 		get_template_part( "template-parts/{$wtf__document_tpl_slug}", $wtf__document_tpl_name );

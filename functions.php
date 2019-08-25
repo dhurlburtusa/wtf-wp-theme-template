@@ -32,8 +32,6 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 	require get_template_directory() . '/includes/back-compat.php';
 }
 
-// https://codex.wordpress.org/Theme_Features
-
 if ( ! function_exists( 'wtf__setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -42,7 +40,9 @@ if ( ! function_exists( 'wtf__setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 *
-	 * Create your own wtf__setup() function to override in a child theme.
+	 * Create your own `wtf__setup` function to override in a child theme.
+	 *
+	 * https://codex.wordpress.org/Theme_Features
 	 *
 	 * @since WTF 0.0.0-alpha
 	 */
@@ -413,81 +413,6 @@ if ( ! function_exists( 'wtf__fonts_url' ) ) :
 endif;
 
 /**
- * Handles JavaScript detection.
- *
- * Adds a `js` class to the root `<html>` element when JavaScript is detected.
- *
- * @since WTF 0.0.0-alpha
- */
-function wtf__javascript_detection() {
-	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
-}
-add_action( 'wp_head', 'wtf__javascript_detection', 0 );
-
-/**
- * Enqueues scripts and styles.
- *
- * @since WTF 0.0.0-alpha
- */
-function wtf__action__wp_enqueue_scripts() {
-	// error_log( 'wtf__action__wp_enqueue_scripts' );
-	// Add custom fonts, used in the main stylesheet.
-	// wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), null );
-
-	// Theme stylesheet.
-	wp_enqueue_style( 'wtf-style', get_template_directory_uri() . '/style.css' );
-
-	// Theme block stylesheet.
-	// wp_enqueue_style( 'wtf-block-style', get_template_directory_uri() . '/assets/styles/blocks.css', array( 'wtf-style' ), '20181230' );
-
-	// Load the Internet Explorer specific stylesheet.
-	// wp_enqueue_style( 'wtf-ie', get_template_directory_uri() . '/assets/styles/ie.css', array( 'wtf-style' ), '20160816' );
-	// wp_style_add_data( 'wtf-ie', 'conditional', 'lt IE 10' );
-
-	// Load the Internet Explorer 8 specific stylesheet.
-	// wp_enqueue_style( 'wtf-ie8', get_template_directory_uri() . '/assets/styles/ie8.css', array( 'wtf-style' ), '20160816' );
-	// wp_style_add_data( 'wtf-ie8', 'conditional', 'lt IE 9' );
-
-	// Load the Internet Explorer 7 specific stylesheet.
-	// wp_enqueue_style( 'wtf-ie7', get_template_directory_uri() . '/assets/styles/ie7.css', array( 'wtf-style' ), '20160816' );
-	// wp_style_add_data( 'wtf-ie7', 'conditional', 'lt IE 8' );
-
-	// Child theme stylesheet
-	if ( TEMPLATEPATH !== STYLESHEETPATH ) {
-		wp_enqueue_style( 'wtf-child-style', get_stylesheet_uri(), array( 'wtf-style' ) );
-	}
-
-	// Load the html5 shiv.
-	// wp_enqueue_script( 'wtf-html5', get_template_directory_uri() . '/assets/scripts/html5.js', array(), '3.7.3' );
-	// wp_script_add_data( 'wtf-html5', 'conditional', 'lt IE 9' );
-
-	wp_enqueue_script( 'wtf-skip-link-focus-fix', get_template_directory_uri() . '/assets/scripts/skip-link-focus-fix.js', array(), '20160816', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-
-	if ( is_singular() && wp_attachment_is_image() ) {
-		// wp_enqueue_script( 'wtf-keyboard-attachment-navigation', get_template_directory_uri() . '/assets/scripts/keyboard-attachment-navigation.js', array( 'jquery' ), '20160816' );
-		wp_enqueue_script( 'wtf-keyboard-attachment-navigation', get_template_directory_uri() . '/assets/scripts/keyboard-attachment-navigation.js', array(), '20160816' );
-	}
-
-	// wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array( 'jquery' ), '20181230', true );
-	wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array(), '20181230', true );
-
-	// TODO: Better understand what wp_localize_script is for and how to properly use it.
-	// wp_localize_script(
-	// 	'wtf-script',
-	// 	'screenReaderText',
-	// 	array(
-	// 		'expand'   => __( 'expand child menu', 'wtf' ),
-	// 		'collapse' => __( 'collapse child menu', 'wtf' ),
-	// 	)
-	// );
-}
-add_action( 'wp_enqueue_scripts', 'wtf__action__wp_enqueue_scripts' );
-
-/**
  * Enqueue styles for the block-based editor.
  *
  * @since WTF 0.0.0-alpha
@@ -499,69 +424,6 @@ function wtf__action__enqueue_block_editor_assets() {
 	wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), null );
 }
 add_action( 'enqueue_block_editor_assets', 'wtf__action__enqueue_block_editor_assets' );
-
-/**
- * Adds custom classes to the array of body classes.
- *
- * @since WTF 0.0.0-alpha
- *
- * @param array $classes Classes for the body element.
- * @return array (Maybe) filtered body classes.
- */
-function wtf__filter__body_class( $classes ) {
-	// Adds a class of custom-background-image to sites with a custom background image.
-	if ( get_background_image() ) {
-		$classes[] = 'custom-background-image';
-	}
-
-	// Adds a class of group-blog to sites with more than 1 published author.
-	if ( is_multi_author() ) {
-		$classes[] = 'group-blog';
-	}
-
-	// Adds a class of no-sidebar to sites without active sidebar.
-	if ( ! is_active_sidebar( 'sidebar-primary' ) ) {
-		$classes[] = 'no-sidebar';
-	}
-
-	// Adds a class of hfeed to non-singular pages.
-	if ( ! is_singular() ) {
-		$classes[] = 'hfeed';
-	}
-
-	return $classes;
-}
-add_filter( 'body_class', 'wtf__filter__body_class' );
-
-function wtf__filter__wp_nav_menu_objects ( $sorted_menu_items, $args ) {
-	// Add Bootstrap-4 `nav-item` to the menu item's `classes`.
-	foreach ( (array) $sorted_menu_items as &$menu_item ) {
-		// Assuming it is okay to mutate the menu items.
-		$menu_item->classes = [
-			'nav-item',
-			'nav-item--' . str_replace( '_', '-', $menu_item->type ),
-			'nav-item--' . $menu_item->object . '-object',
-		];
-		if ( $menu_item->current || $menu_item->current_item_ancestor ) {
-			$menu_item->classes[] = 'active';
-		}
-	}
-
-	return $sorted_menu_items;
-}
-add_filter( 'wp_nav_menu_objects', 'wtf__filter__wp_nav_menu_objects', 10, 2 );
-
-function wtf__filter__nav_menu_link_attributes ( $atts, $item, $args, $depth ) {
-	// Add Bootstrap-4 `nav-link` to the link's `class` attribute.
-	if ( ! empty( $atts['class'] ) ) {
-		$atts['class'] .= ' nav-link';
-	}
-	else {
-		$atts['class'] = 'nav-link';
-	}
-	return $atts;
-}
-add_filter( 'nav_menu_link_attributes', 'wtf__filter__nav_menu_link_attributes', 10, 4);
 
 // /**
 //  * Hides the custom post template for pages on WordPress 4.6 and older
@@ -675,49 +537,202 @@ function wtf__filter__wp_get_attachment_image_attributes( $attr, $attachment, $s
 }
 add_filter( 'wp_get_attachment_image_attributes', 'wtf__filter__wp_get_attachment_image_attributes', 10, 3 );
 
-/**
- * Modifies tag cloud widget arguments to display all tags in the same font size
- * and use list format for better accessibility.
- *
- * @since WTF 0.0.0-alpha
- *
- * @param array $args Arguments for tag cloud widget.
- * @return array The filtered arguments for tag cloud widget.
- */
-function wtf__filter__widget_tag_cloud_args( $args ) {
-	$args['largest']  = 1;
-	$args['smallest'] = 1;
-	$args['unit']     = 'em';
-	$args['format']   = 'list';
-
-	return $args;
-}
-add_filter( 'widget_tag_cloud_args', 'wtf__filter__widget_tag_cloud_args' );
-
-if ( ! function_exists( 'wtf__filter__wtf__document_body_content_tpl_name' ) ) :
+if ( ! function_exists( 'wtf__action__wtf__document_init' ) ) :
 	/**
+	 * Document initialization.
 	 *
-	 * @param {string} $default_document_body_content_tpl_name -
+	 * Note: `WTF__PAGE_TEMPLATE_NAME` will be defined at this point.
 	 */
-	function wtf__filter__wtf__document_body_content_tpl_name ( $default_document_body_content_tpl_name ) {
-		/*
-		 * WTF__PAGE_TEMPLATE_NAME is one of `'404'`, `'archive'`, `'attachment'`,
-		 * `'audio'`, `'author'`, `'category'`, `'date'`, `'front-page'`, `'home'`,
-		 * `'image'`, `'page'`, `'search'`, `'single'`, `'singular'`, `'tag'`,
-		 * `'taxonomy'`, or `'video'`.
-		*/
-		$n = WTF__PAGE_TEMPLATE_NAME;
-		$document_body_content_tpl_name = WTF__PAGE_TEMPLATE_NAME;
-		if ( $n === 'author' || $n === 'category' || $n === 'date' || $n === 'tag' || $n === 'taxonomy' ) {
-			$document_body_content_tpl_name = 'archive';
+	function wtf__action__wtf__document_init () {
+		// error_log( 'wtf__action__wtf__document_init' );
+		// error_log( 'WTF__PAGE_TEMPLATE_NAME: ' . WTF__PAGE_TEMPLATE_NAME );
+
+		/**
+		 * Handles JavaScript detection.
+		 *
+		 * Adds a `js` class to the root `<html>` element when JavaScript is detected.
+		 *
+		 * @since WTF 0.0.0-alpha
+		 */
+		function wtf__javascript_detection() {
+			echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 		}
-		elseif ( $n === 'image' || $n === 'audio' || $n === 'video' ) {
-			$document_body_content_tpl_name = 'attachment';
+		add_action( 'wp_head', 'wtf__javascript_detection', 0 );
+
+		/**
+		 * Enqueues scripts and styles.
+		 *
+		 * @since WTF 0.0.0-alpha
+		 */
+		function wtf__action__wp_enqueue_scripts() {
+			// error_log( 'wtf__action__wp_enqueue_scripts' );
+
+			// Add custom fonts, used in the main stylesheet.
+			// wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), null );
+
+			// Theme stylesheet.
+			wp_enqueue_style( 'wtf-style', get_template_directory_uri() . '/style.css' );
+
+			// Theme block stylesheet.
+			// wp_enqueue_style( 'wtf-block-style', get_template_directory_uri() . '/assets/styles/blocks.css', array( 'wtf-style' ), '20181230' );
+
+			// Load the Internet Explorer specific stylesheet.
+			// wp_enqueue_style( 'wtf-ie', get_template_directory_uri() . '/assets/styles/ie.css', array( 'wtf-style' ), '20160816' );
+			// wp_style_add_data( 'wtf-ie', 'conditional', 'lt IE 10' );
+
+			// Load the Internet Explorer 8 specific stylesheet.
+			// wp_enqueue_style( 'wtf-ie8', get_template_directory_uri() . '/assets/styles/ie8.css', array( 'wtf-style' ), '20160816' );
+			// wp_style_add_data( 'wtf-ie8', 'conditional', 'lt IE 9' );
+
+			// Load the Internet Explorer 7 specific stylesheet.
+			// wp_enqueue_style( 'wtf-ie7', get_template_directory_uri() . '/assets/styles/ie7.css', array( 'wtf-style' ), '20160816' );
+			// wp_style_add_data( 'wtf-ie7', 'conditional', 'lt IE 8' );
+
+			// Child theme stylesheet
+			if ( TEMPLATEPATH !== STYLESHEETPATH ) {
+				wp_enqueue_style( 'wtf-child-style', get_stylesheet_uri(), array( 'wtf-style' ) );
+			}
+
+			// Load the html5 shiv.
+			// wp_enqueue_script( 'wtf-html5', get_template_directory_uri() . '/assets/scripts/html5.js', array(), '3.7.3' );
+			// wp_script_add_data( 'wtf-html5', 'conditional', 'lt IE 9' );
+
+			wp_enqueue_script( 'wtf-skip-link-focus-fix', get_template_directory_uri() . '/assets/scripts/skip-link-focus-fix.js', array(), '20160816', true );
+
+			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+				wp_enqueue_script( 'comment-reply' );
+			}
+
+			if ( is_singular() && wp_attachment_is_image() ) {
+				// wp_enqueue_script( 'wtf-keyboard-attachment-navigation', get_template_directory_uri() . '/assets/scripts/keyboard-attachment-navigation.js', array( 'jquery' ), '20160816' );
+				wp_enqueue_script( 'wtf-keyboard-attachment-navigation', get_template_directory_uri() . '/assets/scripts/keyboard-attachment-navigation.js', array(), '20160816' );
+			}
+
+			// wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array( 'jquery' ), '20181230', true );
+			wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array(), '20181230', true );
+
+			// TODO: Better understand what wp_localize_script is for and how to properly use it.
+			// wp_localize_script(
+			// 	'wtf-script',
+			// 	'screenReaderText',
+			// 	array(
+			// 		'expand'   => __( 'expand child menu', 'wtf' ),
+			// 		'collapse' => __( 'collapse child menu', 'wtf' ),
+			// 	)
+			// );
 		}
-		elseif ( $n === 'home' ) {
-			$document_body_content_tpl_name = 'list';
+		add_action( 'wp_enqueue_scripts', 'wtf__action__wp_enqueue_scripts' );
+
+		/**
+		 * Adds custom classes to the array of body classes.
+		 *
+		 * @since WTF 0.0.0-alpha
+		 *
+		 * @param array $classes Classes for the body element.
+		 * @return array (Maybe) filtered body classes.
+		 */
+		function wtf__filter__body_class( $classes ) {
+			// Adds a class of custom-background-image to sites with a custom background image.
+			if ( get_background_image() ) {
+				$classes[] = 'custom-background-image';
+			}
+
+			// Adds a class of group-blog to sites with more than 1 published author.
+			if ( is_multi_author() ) {
+				$classes[] = 'group-blog';
+			}
+
+			// Adds a class of no-sidebar to sites without active sidebar.
+			if ( ! is_active_sidebar( 'sidebar-primary' ) ) {
+				$classes[] = 'no-sidebar';
+			}
+
+			// Adds a class of hfeed to non-singular pages.
+			if ( ! is_singular() ) {
+				$classes[] = 'hfeed';
+			}
+
+			return $classes;
 		}
-		return $document_body_content_tpl_name;
+		add_filter( 'body_class', 'wtf__filter__body_class' );
+
+		function wtf__filter__nav_menu_link_attributes ( $atts, $item, $args, $depth ) {
+			// Add Bootstrap-4 `nav-link` to the link's `class` attribute.
+			if ( ! empty( $atts['class'] ) ) {
+				$atts['class'] .= ' nav-link';
+			}
+			else {
+				$atts['class'] = 'nav-link';
+			}
+			return $atts;
+		}
+		add_filter( 'nav_menu_link_attributes', 'wtf__filter__nav_menu_link_attributes', 10, 4);
+
+		/**
+		 * Modifies tag cloud widget arguments to display all tags in the same font size
+		 * and use list format for better accessibility.
+		 *
+		 * @since WTF 0.0.0-alpha
+		 *
+		 * @param array $args Arguments for tag cloud widget.
+		 * @return array The filtered arguments for tag cloud widget.
+		 */
+		function wtf__filter__widget_tag_cloud_args( $args ) {
+			$args['largest']  = 1;
+			$args['smallest'] = 1;
+			$args['unit']     = 'em';
+			$args['format']   = 'list';
+
+			return $args;
+		}
+		add_filter( 'widget_tag_cloud_args', 'wtf__filter__widget_tag_cloud_args' );
+
+		function wtf__filter__wp_nav_menu_objects ( $sorted_menu_items, $args ) {
+			// Add Bootstrap-4 `nav-item` to the menu item's `classes`.
+			foreach ( (array) $sorted_menu_items as &$menu_item ) {
+				// Assuming it is okay to mutate the menu items.
+				$menu_item->classes = [
+					'nav-item',
+					'nav-item--' . str_replace( '_', '-', $menu_item->type ),
+					'nav-item--' . $menu_item->object . '-object',
+				];
+				if ( $menu_item->current || $menu_item->current_item_ancestor ) {
+					$menu_item->classes[] = 'active';
+				}
+			}
+
+			return $sorted_menu_items;
+		}
+		add_filter( 'wp_nav_menu_objects', 'wtf__filter__wp_nav_menu_objects', 10, 2 );
+
+		if ( ! function_exists( 'wtf__filter__wtf__document_body_content_tpl_name' ) ) :
+			/**
+			 *
+			 * @param {string} $default_document_body_content_tpl_name -
+			 */
+			function wtf__filter__wtf__document_body_content_tpl_name ( $default_document_body_content_tpl_name ) {
+				/*
+				 * WTF__PAGE_TEMPLATE_NAME is one of `'404'`, `'archive'`, `'attachment'`,
+				 * `'audio'`, `'author'`, `'category'`, `'date'`, `'front-page'`, `'home'`,
+				 * `'image'`, `'page'`, `'search'`, `'single'`, `'singular'`, `'tag'`,
+				 * `'taxonomy'`, or `'video'`.
+				*/
+				$n = WTF__PAGE_TEMPLATE_NAME;
+				$document_body_content_tpl_name = WTF__PAGE_TEMPLATE_NAME;
+				if ( $n === 'author' || $n === 'category' || $n === 'date' || $n === 'tag' || $n === 'taxonomy' ) {
+					$document_body_content_tpl_name = 'archive';
+				}
+				elseif ( $n === 'image' || $n === 'audio' || $n === 'video' ) {
+					$document_body_content_tpl_name = 'attachment';
+				}
+				elseif ( $n === 'home' ) {
+					$document_body_content_tpl_name = 'list';
+				}
+				return $document_body_content_tpl_name;
+			}
+		endif;
+		add_filter( 'wtf__document_body_content_tpl_name', 'wtf__filter__wtf__document_body_content_tpl_name' );
+
 	}
 endif;
-add_filter( 'wtf__document_body_content_tpl_name', 'wtf__filter__wtf__document_body_content_tpl_name' );
+add_action( 'wtf__document_init', 'wtf__action__wtf__document_init', 0 );
