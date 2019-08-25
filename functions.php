@@ -37,6 +37,10 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 	require get_template_directory() . '/includes/back-compat.php';
 }
 
+if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+	require get_template_directory() . '/includes/debug.php';
+}
+
 if ( ! function_exists( 'wtf__setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
