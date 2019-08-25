@@ -41,7 +41,7 @@ if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 	require get_template_directory() . '/includes/debug.php';
 }
 
-if ( ! function_exists( 'wtf__setup' ) ) :
+if ( ! function_exists( 'wtf__action__after_theme_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -49,13 +49,13 @@ if ( ! function_exists( 'wtf__setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 *
-	 * Create your own `wtf__setup` function to override in a child theme.
+	 * Create your own `wtf__action__after_theme_setup` function to override in a child theme.
 	 *
 	 * https://codex.wordpress.org/Theme_Features
 	 *
 	 * @since WTF 0.0.0-alpha
 	 */
-	function wtf__setup() {
+	function wtf__action__after_theme_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed at WordPress.org. See: https://hypersoft.llc/products/wordpress/themes/wtf
@@ -225,8 +225,8 @@ if ( ! function_exists( 'wtf__setup' ) ) :
 		 */
 		add_editor_style( array( 'assets/styles/editor-style.css', wtf__fonts_url() ) );
 	}
-endif; // wtf__setup
-add_action( 'after_setup_theme', 'wtf__setup' );
+endif; // wtf__action__after_theme_setup
+add_action( 'after_setup_theme', 'wtf__action__after_theme_setup' );
 
 /**
  * Sets the content width in pixels, based on the theme's design and stylesheet.
