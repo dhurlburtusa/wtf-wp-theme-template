@@ -451,6 +451,40 @@ if ( ! function_exists( 'wtf__action__wtf__document_init' ) ) :
 		// error_log( 'wtf__action__wtf__document_init' );
 		// error_log( 'WTF__PAGE_TEMPLATE_NAME: ' . WTF__PAGE_TEMPLATE_NAME );
 
+		/**
+		 * Add the charset meta tag to the document head.
+		 */
+		function wtf__action__wp_head__add_charset_meta () {
+			echo '<meta charset="' . esc_attr( get_bloginfo( 'charset' ) ) . '">' . "\n";
+		}
+		add_action( 'wp_head', 'wtf__action__wp_head__add_charset_meta', 1 );
+
+		/**
+		 * Add the viewport meta tag to the document head.
+		 */
+		function wtf__action__wp_head__add_viewport_meta () {
+			echo '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
+		}
+		add_action( 'wp_head', 'wtf__action__wp_head__add_viewport_meta', 1 );
+
+		/**
+		 * Adds the profile link to the document head.
+		 */
+		function wtf__action__wp_head__add_profile_link () {
+			echo '<link rel="profile" href="http://gmpg.org/xfn/11">' . "\n";
+		}
+		add_action( 'wp_head', 'wtf__action__wp_head__add_profile_link', 3 );
+
+		/**
+		 * Adds the pingback link to the document head.
+		 */
+		function wtf__action__wp_head__add_pingback_link () {
+			if ( is_singular() && pings_open( get_queried_object() ) ) {
+				echo '<link rel="pingback" href="' . esc_url( get_bloginfo( 'pingback_url' ) ) . '">' . "\n";
+			}
+		}
+		add_action( 'wp_head', 'wtf__action__wp_head__add_pingback_link', 3 );
+
 		if ( ! function_exists( 'wtf__javascript_detection' ) ) :
 			/**
 			 * Handles JavaScript detection.
@@ -530,6 +564,12 @@ if ( ! function_exists( 'wtf__action__wtf__document_init' ) ) :
 			}
 		endif;
 		add_action( 'wp_enqueue_scripts', 'wtf__action__wp_enqueue_scripts' );
+
+		function wtf__action__wp_body_open__add_skip_content_link () {
+			/* TODO: Add a filter for main content fragment ID */
+			echo '<a class="sr-only" href="#content">' . __( 'Skip to content', 'wtf' ) . '</a>' . "\n";
+		}
+		add_action( 'wp_body_open', 'wtf__action__wp_body_open__add_skip_content_link' );
 
 		if ( ! function_exists( 'wtf__filter__body_class' ) ) :
 			/**
@@ -620,6 +660,20 @@ if ( ! function_exists( 'wtf__action__wtf__document_init' ) ) :
 			}
 		endif;
 		add_filter( 'wp_nav_menu_objects', 'wtf__filter__wp_nav_menu_objects', 10, 2 );
+
+		/*
+		Filters:
+		wtf__document_tpl_slug
+		wtf__document_tpl_name
+			wtf__document_head_tpl_name
+			wtf__document_body_tpl_name
+				wtf__document_body_start_tpl_name
+				wtf__document_body_content_tpl_name
+					wtf__page_header_tpl_name
+					wtf__primary_page_sidebar_tpl_name
+					wtf__page_footer_tpl_name
+				wtf__document_body_end_tpl_name
+		*/
 
 		if ( ! function_exists( 'wtf__filter__wtf__document_body_content_tpl_name' ) ) :
 			/**
