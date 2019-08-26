@@ -441,6 +441,21 @@ if ( ! function_exists( 'wtf__filter__wp_get_attachment_image_attributes' ) ) :
 endif;
 add_filter( 'wp_get_attachment_image_attributes', 'wtf__filter__wp_get_attachment_image_attributes', 10, 3 );
 
+function _wtf__action__admin_init () {
+	define( 'WTF__PAGE_TEMPLATE_NAME', 'wp-admin:' . basename( $GLOBALS['pagenow'], '.php' ) );
+}
+add_action( 'admin_init', '_wtf__action__admin_init' );
+
+function _wtf__action__login_init () {
+	// confirmaction, login, logout, lostpassword, postpass, register, resetpass, retrievepassword
+	$wtf_page_template_name = $GLOBALS['action'];
+	if ( 'rp' === $wtf_page_template_name) {
+		$wtf_page_template_name = 'resetpass';
+	}
+	define( 'WTF__PAGE_TEMPLATE_NAME', $wtf_page_template_name );
+}
+add_action( 'login_init', '_wtf__action__login_init' );
+
 if ( ! function_exists( 'wtf__action__wtf__document_init' ) ) :
 	/**
 	 * Document initialization.
