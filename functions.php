@@ -30,11 +30,11 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 // Set our theme version.
 define( 'WTF__VERSION', '0.0.0-alpha' );
 
-// Usually loading the theme is not necessary during an AJAX call or while running
-// cron.
-$load_theme = apply_filters( 'wtf__load_theme', ( ! wp_doing_ajax() && ! wp_doing_cron() ) );
+// Usually setting up the theme is not necessary during an AJAX call or while
+// running cron.
+$set_up_theme = apply_filters( 'wtf__set_up_theme', ( ! wp_doing_ajax() && ! wp_doing_cron() ) );
 
-if ( $load_theme ) :
+if ( $set_up_theme ) :
 
 	/**
 	 * WTF only works in WordPress 4.7 or later.
@@ -728,6 +728,6 @@ if ( $load_theme ) :
 	endif;
 	add_action( 'wtf__document_init', 'wtf__action__wtf__document_init' );
 
-endif; // eo if ( $load_theme )
+endif; // eo if ( $set_up_theme )
 
-unset( $load_theme );
+unset( $set_up_theme );
