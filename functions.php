@@ -571,7 +571,7 @@ if ( $set_up_theme ) :
 					}
 
 					// wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array( 'jquery' ), '20181230', true );
-					wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array(), '20181230', true );
+					// wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array(), '20181230', true );
 
 					// TODO: Better understand what wp_localize_script is for and how to properly use it.
 					// wp_localize_script(
