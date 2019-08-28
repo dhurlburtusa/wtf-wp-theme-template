@@ -1,0 +1,28 @@
+{
+  "name": "wtf-wp-theme-template",
+  "version": "0.0.0-alpha",
+  "description": "The WTF WordPress Theme Framework",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo \"TODO: Set up build script.\"",
+    "start": "echo \"TODO: Set up start script.\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhurlburtusa/wtf-wp-theme-template.git"
+  },
+  "keywords": [
+    "framework",
+    "template",
+    "theme",
+    "wordpress",
+    "wtf"
+  ],
+  "author": "Danny Hurlburt",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/dhurlburtusa/wtf-wp-theme-template/issues"
+  },
+  "homepage": "https://github.com/dhurlburtusa/wtf-wp-theme-template#readme"
+}
