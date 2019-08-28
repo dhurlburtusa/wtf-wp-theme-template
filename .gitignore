@@ -1,0 +1,36 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# Note: Directories beginning with a `/` only applies to current directory.
+# Without the `/`, matching sub-directories will be ignored.
+
+# Dependencies
+/node_modules/
+
+# Testing
+/__tests__/unit/coverage/
+/coverage/
+
+.coveralls.yml
+
+# Build/Deployment
+/build/
+/dist/
+/lib/
+/pkg/
+
+# Environment Variable files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+/logs/
+npm-debug.log*
+
+# Runtime data
+/pids/
+
+*.pid
+*.seed
+*.pid.lock
