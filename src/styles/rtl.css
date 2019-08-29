@@ -98,19 +98,7 @@ textarea,
 	font-family: Arial, Tahoma, sans-serif;
 }
 
-::-webkit-input-placeholder {
-	font-family: Arial, Tahoma, sans-serif;
-}
-
-:-moz-placeholder {
-	font-family: Arial, Tahoma, sans-serif;
-}
-
-::-moz-placeholder {
-	font-family: Arial, Tahoma, sans-serif;
-}
-
-:-ms-input-placeholder {
+::placeholder {
 	font-family: Arial, Tahoma, sans-serif;
 }
 
@@ -544,9 +532,6 @@ body:not(.search-results) .entry__summary .alignleft {
 		left: 0.5625em;
 		right: auto;
 		top: 0.8125em;
-		-webkit-transform: rotate(-90deg);
-		-moz-transform: rotate(-90deg);
-		-ms-transform: rotate(-90deg);
 		transform: rotate(-90deg);
 	}
 
@@ -639,14 +624,12 @@ body:not(.search-results) .entry__summary .alignleft {
 	body:not(.search-results) article:not(.type-page) .entry__content > blockquote.alignleft.below-entry-meta {
 		margin-right: 1.473684211em;
 		margin-left: 0;
-		width: -webkit-calc(50% - 0.736842105em);
 		width: calc(50% - 0.736842105em);;
 	}
 
 	body:not(.search-results) article:not(.type-page) .entry__content > blockquote.alignright.below-entry-meta {
 		margin-right: -40%;
 		margin-left: 1.473684211em;
-		width: -webkit-calc(60% - 1.4736842105em);
 		width: calc(60% - 1.4736842105em);
 	}
 

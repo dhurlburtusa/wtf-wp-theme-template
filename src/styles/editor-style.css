@@ -165,7 +165,6 @@ blockquote.alignright {
 	border: 0 solid #1a1a1a;
 	border-top-width: 4px;
 	padding: 18px 0 0;
-	width: -webkit-calc(50% - 14px);
 	width: calc(50% - 14px);
 }
 

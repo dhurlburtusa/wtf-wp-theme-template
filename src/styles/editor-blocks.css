@@ -362,7 +362,6 @@ Description: Used to style blocks in the editor.
 	.wp-block-quote.alignright {
 		border-width: 4px 0 0 0;
 		padding: 0.9473684211em 0 0;
-		width: -webkit-calc(50% - 0.736842105em);
 		width: calc(50% - 0.736842105em);
 	}
 
@@ -379,7 +378,6 @@ Description: Used to style blocks in the editor.
 @media screen and (min-width: 80em) {
 	.editor-block-list__block .wp-block-quote.alignleft {
 		margin-left: -40%;
-		width: -webkit-calc(60% - 1.4736842105em);
 		width: calc(60% - 1.4736842105em);
 	}
 }
@@ -467,7 +465,6 @@ Description: Used to style blocks in the editor.
 	.wp-block-freeform.block-library-rich-text__tinymce blockquote.alignright {
 		border-width: 4px 0 0 0;
 		padding: 0.9473684211em 0 0;
-		width: -webkit-calc(50% - 0.736842105em);
 		width: calc(50% - 0.736842105em);
 	}
 }
