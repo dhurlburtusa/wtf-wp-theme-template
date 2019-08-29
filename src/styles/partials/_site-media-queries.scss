@@ -1,0 +1,104 @@
+@import 'custom-media';
+
+/**
+ * 14.0 - Media Queries
+ */
+
+/**
+ * Does the same thing as <meta name="viewport" content="width=device-width">,
+ * but in the future W3C standard way. -ms- prefix is required for IE10+ to
+ * render responsive styling in Windows 8 "snapped" views; IE10+ does not honor
+ * the meta tag. See https://core.trac.wordpress.org/ticket/25888.
+ */
+@viewport {
+	width: device-width;
+}
+
+
+@media (--sm-viewport) {
+
+}
+
+@media (--md-viewport) {
+
+}
+
+@media (--lg-viewport) {
+
+}
+
+@media (--xl-viewport) {
+
+}
+
+/**
+ * 14.1 - >= 710px
+ */
+
+/* @media screen and (min-width: 44.375em) {*/
+	/* restore sr-only */
+/*
+	.pagination .current .sr-only {
+		position: absolute !important;
+	}
+} */
+
+
+/**
+ * 14.2 - >= 783px
+ */
+
+/* @media screen and (min-width: 48.9375em) {
+	.pg__body {
+		flex-direction: row;
+	}
+
+	.pg__sidebar {
+		width: 25%;
+		min-width: 240px;
+		max-width: 360px;
+	}
+} */
+
+
+/**
+ * 14.3 - >= 910px
+ */
+
+/* @media screen and (min-width: 56.875em) {
+	.navigation--primary > li {
+		float: left;
+	}
+
+	.navigation--primary ul ul {
+		display: block;
+		left: -999em;
+		margin: 0;
+		position: absolute;
+		z-index: 99999;
+	}
+
+	.dropdown-toggle,
+	.navigation--primary ul .dropdown-toggle.toggled-on,
+	.navbar-toggler,
+	.site-header .navigation--social,
+	.site-footer .navigation--primary {
+		display: none;
+	}
+} */
+
+
+/**
+ * 14.4 - >= 985px
+ */
+
+/* @media screen and (min-width: 61.5625em) {
+} */
+
+
+/**
+ * 14.5 - >= 1200px
+ */
+
+/* @media screen and (min-width: 75em) {
+} */

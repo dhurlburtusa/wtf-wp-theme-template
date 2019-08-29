@@ -1,0 +1,38 @@
+
+@media print {
+	form,
+	button,
+	input,
+	select,
+	textarea,
+	.navigation,
+	.pg__sidebar,
+	.content-widgets,
+	.header-image,
+	.page-links,
+	.link--edit,
+	.comment-respond,
+	.comment-edit-link,
+	.comment-reply-link,
+	.comment-metadata .link--edit,
+	.pingback .link--edit {
+		display: none;
+	}
+
+	.site-tagline {
+		display: block;
+	}
+	body,
+	.page {
+		background: none !important; /* Brute force since user agents all print differently. */
+	}
+
+	.entry__content a,
+	.entry__summary a,
+	.archive__description a,
+	.comment-content a,
+	.pingback .comment-body > a {
+		box-shadow: none;
+	}
+}
+

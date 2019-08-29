@@ -1,1 +1,18 @@
-@custom-media --small-viewport (max-width: 20em);
+/* Note: Using mobile-first styling. */
+
+/*
+Extra small devices (portrait phones, less than 576px)
+No media query for `xs` since this is the default in Bootstrap
+*/
+
+/* Small devices (landscape phones, 576px and up) */
+@custom-media --sm-viewport (min-width: 576px);
+
+/* Medium devices (tablets, 768px and up) */
+@custom-media --md-viewport (min-width: 768px);
+
+/* Large devices (desktops, 992px and up) */
+@custom-media --lg-viewport (min-width: 992px);
+
+/* Extra large devices (large desktops, 1200px and up) */
+@custom-media --xl-viewport (min-width: 1200px);

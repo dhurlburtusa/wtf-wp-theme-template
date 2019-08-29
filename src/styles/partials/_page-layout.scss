@@ -1,0 +1,19 @@
+/* _page-layout.scss */
+
+.pg {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.pg__body {
+	display: flex;
+	flex-direction: column;
+	flex: 1 0 auto;
+}
+
+// .pg__body__content {}
+
+.pg__sidebar {
+	padding: 1rem;
+}

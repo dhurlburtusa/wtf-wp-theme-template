@@ -16,7 +16,7 @@ body {
   color: deeppink;
 }
 
-@media (--small-viewport) {
+@media (--sm-viewport) {
   .thing {
     color: crimson;
   }
