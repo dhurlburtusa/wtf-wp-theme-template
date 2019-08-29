@@ -4,8 +4,12 @@
   "description": "The WTF WordPress Theme Framework",
   "main": "index.js",
   "scripts": {
-    "build": "echo \"TODO: Set up build script.\"",
-    "start": "echo \"TODO: Set up start script.\"",
+    "build": "npm run build:css:style -- --env production && npm run build:css:assets -- --env production",
+    "build:css:style": "postcss style.scss --config configs --output style.css --map",
+    "build:css:assets": "postcss src/styles/*.{css,scss} --base src/styles --config configs --dir ./assets/styles --ext css --map",
+    "start": "npm-run-all --parallel start:css:*",
+    "start:css:style": "npm run build:css:style -- --watch",
+    "start:css:assets": "npm run build:css:assets -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +28,18 @@
   "bugs": {
     "url": "https://github.com/dhurlburtusa/wtf-wp-theme-template/issues"
   },
-  "homepage": "https://github.com/dhurlburtusa/wtf-wp-theme-template#readme"
+  "homepage": "https://github.com/dhurlburtusa/wtf-wp-theme-template#readme",
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "npm-run-all": "^4.1.5",
+    "postcss-assets": "^5.0.0",
+    "postcss-cli": "^6.1.3",
+    "postcss-disabled": "^1.0.0",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-safe-parser": "^4.0.1",
+    "postcss-scss": "^2.0.0",
+    "postcss-sorting": "^5.0.1",
+    "postcss-syntax": "^0.36.2",
+    "precss": "^4.0.0"
+  }
 }
