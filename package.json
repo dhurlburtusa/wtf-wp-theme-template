@@ -40,6 +40,7 @@
     "postcss-scss": "^2.0.0",
     "postcss-sorting": "^5.0.1",
     "postcss-syntax": "^0.36.2",
+    "postcss-url": "^8.0.0",
     "precss": "^4.0.0"
   }
 }

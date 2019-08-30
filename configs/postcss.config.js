@@ -11,6 +11,8 @@ module.exports = (ctx) => {
         extensions: ['.css', '.scss'],
         prefix: '_',
       }),
+      require('postcss-url')({
+      }),
       require('postcss-assets')({
         loadPaths: [
           'assets/fonts/',
