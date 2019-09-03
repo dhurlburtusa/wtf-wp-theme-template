@@ -8,7 +8,7 @@ add_action( 'wtf__debug', function () {
 	error_log(
 		'================================================================================' .
 		"\n" .
-		'wp-content/themes/wtf/debug.php'
+		'wp-content/themes/wtf/includes/debug.php'
 	);
 	error_log( '$pagenow: ' . $GLOBALS['pagenow'] );
 	error_log( 'wp_doing_ajax(): ' . wp_doing_ajax() );
