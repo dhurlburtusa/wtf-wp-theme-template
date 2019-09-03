@@ -18,6 +18,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 @import 'src/styles/partials/page-layout';
 
-@import 'src/styles/partials/components';
+@import 'src/styles/partials/components/comments';
+@import 'src/styles/partials/components/featured-images';
+@import 'src/styles/partials/components/gallery';
+@import 'src/styles/partials/components/navigation';
+@import 'src/styles/partials/components/posts';
+@import 'src/styles/partials/components/site-footer';
+@import 'src/styles/partials/components/site-header';
 
 @import 'src/styles/partials/site-media-queries';
