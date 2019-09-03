@@ -39,6 +39,7 @@
     "postcss-safe-parser": "^4.0.1",
     "postcss-scss": "^2.0.0",
     "postcss-sorting": "^5.0.1",
+    "postcss-strip-inline-comments": "^0.1.5",
     "postcss-syntax": "^0.36.2",
     "postcss-url": "^8.0.0",
     "precss": "^4.0.0"
