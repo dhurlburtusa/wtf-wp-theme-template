@@ -1,0 +1,16 @@
+/**
+ * Placeholders:
+ *
+ * Also known as functional selectors. See https://jonneal.dev/specs/css-extend-rule/#functional-selector.
+ */
+
+%screen-reader-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	padding: 0;
+	overflow: hidden;
+	white-space: nowrap;
+}
