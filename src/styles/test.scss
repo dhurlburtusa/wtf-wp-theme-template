@@ -1,27 +1,28 @@
 @import 'partials/custom-media';
 
 :root {
-  --bg-color: hotpink;
+	--bg-color: hotpink;
 }
 
 body {
-  background: var(--bg-color);
-  &.ugly {
-    color: teal;
-  }
+	background: var(--bg-color);
+
+	&.ugly {
+		color: teal;
+	}
 }
 
 .thing {
-  display: flex;
-  color: deeppink;
+	display: flex;
+	color: deeppink;
 }
 
 @media (--sm-viewport) {
-  .thing {
-    color: crimson;
-  }
+	.thing {
+		color: crimson;
+	}
 }
 
 .foo:disabled {
-  background-color: #f9f9f9;
+	background-color: #f9f9f9;
 }

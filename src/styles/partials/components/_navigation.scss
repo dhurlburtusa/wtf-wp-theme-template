@@ -1,42 +1,5 @@
-
-.navigation--primary ul {
-	list-style: none;
-	margin: 0;
-}
-
-.navigation--primary li {
-	position: relative;
-}
-
-.navigation--primary a {
-	display: block;
-}
-
-.navigation--primary ul ul {
-	display: none;
-}
-
-.no-js .navigation--primary ul ul {
-	display: block;
-}
-
-.navigation--primary ul .toggled-on {
-	display: block;
-}
-
-.navigation--social ul {
-	list-style: none;
-	margin: 0;
-}
-
-.navigation--social li {
-	float: left;
-}
-
-.navigation--social a {
-	display: block;
-	position: relative;
-}
+@import 'navigation--primary';
+@import 'navigation--social';
 
 /*
 .pagination .nav-links {
@@ -50,7 +13,7 @@
 }
 */
 
-/* reset sr-only */
+// reset sr-only
 /*
 .pagination .current .sr-only {
 	position: static !important;
