@@ -1,0 +1,8 @@
+# Temporarily ignore style sheets carried over from original theme.
+/src/styles/blocks.css
+/src/styles/editor-blocks.css
+/src/styles/editor-style.css
+/src/styles/ie.css
+/src/styles/ie7.css
+/src/styles/ie8.css
+/src/styles/rtl.css
