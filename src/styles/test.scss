@@ -1,3 +1,9 @@
+@charset "utf-8";
+
+@import 'partials/variables';
+@import 'partials/placeholders';
+@import 'partials/mixins';
+
 @import 'partials/custom-media';
 
 :root {
@@ -12,7 +18,13 @@ body {
 	}
 }
 
+.foo {
+	z-index: 999;
+}
+
 .thing {
+	@extend %screen-reader-only;
+
 	display: flex;
 	color: deeppink;
 }
@@ -25,4 +37,36 @@ body {
 
 .foo:disabled {
 	background-color: #f9f9f9;
+}
+
+$n: 2;
+
+a { width: calc(10px * $n); }
+
+$n: 2;
+
+@if $n == 1 {
+	a { color: red; }
+}
+@else {
+	a { color: blue; }
+}
+
+$x: false;
+
+@if not $x {
+	a { color: teal; }
+}
+
+@if $x != null {
+	a { color: black; }
+}
+
+div {
+	font-size: 16px;
+	font-weight: 700;
+	// font: {
+	// 	size: 16px;
+	// 	weight: 700;
+	// }
 }
