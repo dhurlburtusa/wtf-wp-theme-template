@@ -213,7 +213,6 @@ module.exports = (ctx) => {
         // },
       }),
       require('postcss-disabled')({ addClass: true }),
-      require('postcss-sorting')({}),
       env === 'production'
         ? require('cssnano')({
           preset: [
