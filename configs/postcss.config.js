@@ -69,6 +69,7 @@ module.exports = (ctx) => {
         // If not valid browserslist configuration is specified, the default browserslist
         // query will be used. See https://github.com/csstools/postcss-preset-env#browsers.
         // browsers: '> 0.5%, last 2 versions, Firefox ESR, not dead', // The default. See https://github.com/browserslist/browserslist#queries.
+        // browsers: 'ie >= 9',
 
         // By default, plugin will bubble only `@media` and `@supports` at-rules. See
         // https://github.com/postcss/postcss-nested#bubble.
@@ -213,8 +214,20 @@ module.exports = (ctx) => {
       }),
       require('postcss-disabled')({ addClass: true }),
       require('postcss-sorting')({}),
-      env === 'production' ? require('cssnano')() : null,
+      env === 'production'
+        ? require('cssnano')({
+          preset: [
+            'default',
+            {
+              // Re-enable since `cssDeclarationSorter` is disabled by default.
+              cssDeclarationSorter: true,
+              // zindex: {
+              //   exclude: true,
+              // },
+            }
+          ],
+        })
+        : null,
     ].filter(Boolean),
   };
 };
-
