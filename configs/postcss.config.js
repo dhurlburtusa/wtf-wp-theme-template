@@ -89,11 +89,6 @@ module.exports = (ctx) => {
         // robustness.
         disable: '@import',
 
-        // The `name` option determines the at-rule name being used to extend selectors.
-        // By default, this name is `extend`, meaning `@extend` rules are parsed. See
-        // https://github.com/csstools/postcss-extend-rule#name.
-        // extend: 'extend', // The default.
-
         // The `features` option enables or disables specific polyfills by ID. See
         // https://github.com/csstools/postcss-preset-env#features.
         features: {
@@ -137,6 +132,11 @@ module.exports = (ctx) => {
         // replaced with an empty string. See https://github.com/simonsmith/postcss-property-lookup#loglevel.
         // logLevel: 'error',
         // logLevel: 'warn', // The default.
+
+        // The `name` option determines the at-rule name being used to extend selectors.
+        // By default, this name is `extend`, meaning `@extend` rules are parsed. See
+        // https://github.com/csstools/postcss-extend-rule#name.
+        // name: 'extend', // The default.
 
         // The `onFunctionalSelector` option determines how functional selectors should be
         // handled. Its options are:
