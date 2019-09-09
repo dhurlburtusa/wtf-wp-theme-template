@@ -1,0 +1,26 @@
+/**
+ * This is the main foundational style sheet for the WTF theme template.
+ */
+@charset "utf-8";
+
+@import 'partials/variables';
+@import 'partials/placeholders';
+@import 'partials/mixins';
+@import 'partials/normalize';
+
+@import 'partials/fonts';
+
+@import 'partials/page-layout';
+@import 'partials/accessibility';
+
+@import 'partials/components/comments';
+@import 'partials/components/featured-images';
+@import 'partials/components/gallery';
+@import 'partials/components/navigation';
+@import 'partials/components/posts';
+@import 'partials/components/site-footer';
+@import 'partials/components/site-header';
+@import 'partials/multisite';
+@import 'partials/site-media-queries';
+
+@import 'partials/svg';

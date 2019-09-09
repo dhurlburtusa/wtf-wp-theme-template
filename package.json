@@ -4,14 +4,11 @@
   "description": "The WTF WordPress Theme Framework",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:css:style -- --env production && npm run build:css:assets -- --env production",
-    "build:css:style": "postcss style.scss --output style.css --map",
+    "build": "npm run build:css:assets -- --env production",
     "build:css:assets": "postcss src/styles/*.{css,scss} --base src/styles --dir ./assets/styles --ext css --map",
     "lint": "npm-run-all --parallel lint:css:*",
-    "lint:css:style": "stylelint style.scss",
     "lint:css:assets": "stylelint \"src/styles/**/*.{css,scss}\"",
     "start": "npm-run-all --parallel start:css:*",
-    "start:css:style": "npm run build:css:style -- --watch",
     "start:css:assets": "npm run build:css:assets -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

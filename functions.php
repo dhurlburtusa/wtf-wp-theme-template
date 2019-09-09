@@ -518,7 +518,7 @@ if ( $set_up_theme ) :
 					echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 				}
 			endif;
-			add_action( 'wp_head', 'wtf__javascript_detection', 0 );
+			add_action( 'wp_head', 'wtf__javascript_detection', 4 );
 
 			if ( ! function_exists( 'wtf__action__wp_enqueue_scripts' ) ) :
 				/**
@@ -533,7 +533,8 @@ if ( $set_up_theme ) :
 					// wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), null );
 
 					// Theme stylesheet.
-					wp_enqueue_style( 'wtf-style', get_template_directory_uri() . '/style.css' );
+					// wp_enqueue_style( 'wtf-style', get_template_directory_uri() . '/style.css' );
+					wp_enqueue_style( 'wtf-style', get_template_directory_uri() . '/assets/styles/foundation.css' );
 
 					// Theme block stylesheet.
 					// wp_enqueue_style( 'wtf-block-style', get_template_directory_uri() . '/assets/styles/blocks.css', array( 'wtf-style' ), '20181230' );
@@ -550,10 +551,10 @@ if ( $set_up_theme ) :
 					// wp_enqueue_style( 'wtf-ie7', get_template_directory_uri() . '/assets/styles/ie7.css', array( 'wtf-style' ), '20160816' );
 					// wp_style_add_data( 'wtf-ie7', 'conditional', 'lt IE 8' );
 
-					// Child theme stylesheet
-					if ( TEMPLATEPATH !== STYLESHEETPATH ) {
-						wp_enqueue_style( 'wtf-child-style', get_stylesheet_uri(), array( 'wtf-style' ) );
-					}
+					// // Child theme stylesheet
+					// if ( TEMPLATEPATH !== STYLESHEETPATH ) {
+					// 	wp_enqueue_style( 'wtf-child-style', get_stylesheet_uri(), array( 'wtf-style' ) );
+					// }
 
 					// Load the html5 shiv.
 					// wp_enqueue_script( 'wtf-html5', get_template_directory_uri() . '/assets/scripts/html5.js', array(), '3.7.3' );
@@ -584,7 +585,9 @@ if ( $set_up_theme ) :
 					// );
 				}
 			endif;
-			add_action( 'wp_enqueue_scripts', 'wtf__action__wp_enqueue_scripts' );
+			// Note: A priority of 0 is required to beat MemberPress theme.css insertion which
+			// happens at priority of 1.
+			add_action( 'wp_enqueue_scripts', 'wtf__action__wp_enqueue_scripts', 0 );
 
 			function wtf__action__wp_body_open__add_skip_content_link () {
 				/* TODO: Add a filter for main content fragment ID */

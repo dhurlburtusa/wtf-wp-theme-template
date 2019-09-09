@@ -13,8 +13,6 @@
 .coveralls.yml
 
 # Build/Deployment
-/style.css
-/style.css.map
 /assets/styles/*.css
 /assets/styles/*.css.map
 /build/
