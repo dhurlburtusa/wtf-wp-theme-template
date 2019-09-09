@@ -1,6 +1,6 @@
 const config = {
   extends: [
-    'stylelint-config-standard',
+    'stylelint-config-wordpress',
   ],
   plugins: [
     'stylelint-scss',
@@ -34,15 +34,29 @@ const config = {
     // When using Autoprefixer, no need to use prefixes in source.
     'at-rule-no-vendor-prefix': true,
     'block-closing-brace-newline-after': 'always',
+    'block-closing-brace-newline-before': 'always-multi-line',
+    'block-opening-brace-newline-after': 'always-multi-line',
+    'color-named': null,
     'comment-empty-line-before': null,
     'indentation': 'tab',
     'max-empty-lines': 2,
+    'max-line-length': null,
     // When using Autoprefixer, no need to use prefixes in source.
     'media-feature-name-no-vendor-prefix': true,
     // When using Autoprefixer, no need to use prefixes in source.
     'property-no-vendor-prefix': true,
+    'rule-empty-line-before': [
+      'always',
+      {
+        ignore: [
+          'after-comment',
+          'first-nested',
+        ],
+      },
+    ],
     // When using Autoprefixer, no need to use prefixes in source.
     'selector-no-vendor-prefix': true,
+    'string-quotes': null,
     // When using Autoprefixer, no need to use prefixes in source.
     'value-no-vendor-prefix': true,
     'scss/at-else-empty-line-before': 'never',
