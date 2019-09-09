@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npm run build:css:assets -- --env production",
     "build:css:assets": "postcss src/styles/*.{css,scss} --base src/styles --dir ./assets/styles --ext css --map",
+    "clean": "rimraf assets/styles/*.{css,map}",
     "lint": "npm-run-all --parallel lint:css:*",
     "lint:css:assets": "stylelint \"src/styles/**/*.{css,scss}\"",
     "start": "npm-run-all --parallel start:css:*",
@@ -48,6 +49,7 @@
     "postcss-syntax": "^0.36.2",
     "postcss-url": "^8.0.0",
     "precss": "^4.0.0",
+    "rimraf": "^3.0.0",
     "stylelint": "^10.1.0",
     "stylelint-config-wordpress": "^14.0.0",
     "stylelint-scss": "^3.10.1"
