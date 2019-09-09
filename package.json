@@ -18,6 +18,10 @@
   },
   "keywords": [
     "framework",
+    "postcss",
+    "sass",
+    "scss",
+    "stylelint",
     "template",
     "theme",
     "wordpress",
