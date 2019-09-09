@@ -41,6 +41,7 @@
     "postcss-cli": "^6.1.3",
     "postcss-disabled": "^1.0.0",
     "postcss-easy-import": "^3.0.0",
+    "postcss-hash": "^1.0.2",
     "postcss-safe-parser": "^4.0.1",
     "postcss-scss": "^2.0.0",
     "postcss-strip-inline-comments": "^0.1.5",

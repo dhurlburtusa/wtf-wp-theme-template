@@ -1,6 +1,18 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 
+function wtf__get_style_asset_manifest () {
+	$manifest = NULL;
+
+	$manifest_json = file_get_contents( get_template_directory_uri() . '/assets/styles/manifest.json' );
+
+	if ( ! $manifest_json === FALSE ) {
+		$manifest = json_decode( $manifest_json, TRUE );
+	}
+
+	return $manifest;
+}
+
 /**
  * Converts a HEX value to RGB.
  *

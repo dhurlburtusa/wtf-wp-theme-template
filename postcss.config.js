@@ -227,6 +227,13 @@ module.exports = (ctx) => {
           ],
         })
         : null,
+      require('postcss-hash')({
+        // algorithm: 'md5', // The default.
+        // manifest: './manifest.json', // The default.
+        manifest: './assets/styles/manifest.json',
+        // trim: 10, // The default.
+        trim: 16,
+      }),
     ].filter(Boolean),
   };
 };

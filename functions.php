@@ -529,12 +529,20 @@ if ( $set_up_theme ) :
 				function wtf__action__wp_enqueue_scripts() {
 					// error_log( 'wtf__action__wp_enqueue_scripts' );
 
+					$manifest = wtf__get_style_asset_manifest();
+
+					if ( ! is_null( $manifest ) ) {
+						$foundation_css = $manifest['foundation.css'];
+
+						if ( ! is_null( $foundation_css ) ) {
+							// Theme stylesheet.
+							wp_enqueue_style( 'wtf-style', get_template_directory_uri() . "/assets/styles/{$foundation_css}", array(), NULL );
+						}
+
+					}
+
 					// Add custom fonts, used in the main stylesheet.
 					// wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), null );
-
-					// Theme stylesheet.
-					// wp_enqueue_style( 'wtf-style', get_template_directory_uri() . '/style.css' );
-					wp_enqueue_style( 'wtf-style', get_template_directory_uri() . '/assets/styles/foundation.css' );
 
 					// Theme block stylesheet.
 					// wp_enqueue_style( 'wtf-block-style', get_template_directory_uri() . '/assets/styles/blocks.css', array( 'wtf-style' ), '20181230' );
