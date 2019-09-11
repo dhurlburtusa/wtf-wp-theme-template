@@ -8,10 +8,10 @@
     "build:assets:styles": "postcss src/styles/*.{css,scss} --base src/styles --dir ./assets/styles --ext css --map",
     "clean": "rimraf assets/styles/*.{css,map}",
     "postinstall": "npm run build",
-    "lint": "npm-run-all --parallel lint:css:*",
+    "lint": "npm-run-all --parallel lint:assets:*",
     "lint:assets:styles": "stylelint \"src/styles/**/*.{css,scss}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npm-run-all --parallel watch:css:*",
+    "watch": "npm-run-all --parallel watch:assets:*",
     "watch:assets:styles": "npm run build:assets:styles -- --watch"
   },
   "repository": {
