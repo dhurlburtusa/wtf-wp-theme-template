@@ -7,6 +7,7 @@
     "build": "npm run build:css:assets -- --env production",
     "build:css:assets": "postcss src/styles/*.{css,scss} --base src/styles --dir ./assets/styles --ext css --map",
     "clean": "rimraf assets/styles/*.{css,map}",
+    "postinstall": "npm run build",
     "lint": "npm-run-all --parallel lint:css:*",
     "lint:css:assets": "stylelint \"src/styles/**/*.{css,scss}\"",
     "start": "npm-run-all --parallel start:css:*",
