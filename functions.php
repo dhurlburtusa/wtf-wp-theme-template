@@ -532,11 +532,11 @@ if ( $set_up_theme ) :
 					$manifest = wtf__get_style_asset_manifest();
 
 					if ( ! is_null( $manifest ) ) {
-						$foundation_css = $manifest['foundation.css'];
+						$bones_css = $manifest['bones.css'];
 
-						if ( ! is_null( $foundation_css ) ) {
+						if ( ! is_null( $bones_css ) ) {
 							// Theme stylesheet.
-							wp_enqueue_style( 'wtf-style', get_template_directory_uri() . "/assets/styles/{$foundation_css}", array(), NULL );
+							wp_enqueue_style( 'wtf-style', get_template_directory_uri() . "/assets/styles/{$bones_css}", array(), NULL );
 						}
 
 					}
