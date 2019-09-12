@@ -12,8 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 	<div class="pg__body" id="content">
 		<div class="pg__body__content">
 			<main>
+				<!---
 				<p><?php echo WTF__PAGE_TEMPLATE_NAME; ?></p>
 				<p>template-parts/document-parts/document_body_content-list.php</p>
+				--->
 
 				<?php if ( have_posts() ) : ?>
 					<section class="posts-area posts-area--<?php echo WTF__PAGE_TEMPLATE_NAME; ?>">

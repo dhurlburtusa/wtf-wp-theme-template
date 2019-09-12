@@ -8,7 +8,9 @@
  */
 ?>
 
+<!---
 <p>template-parts/post-parts/post_content-post.php</p>
+--->
 
 <?php
 if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }

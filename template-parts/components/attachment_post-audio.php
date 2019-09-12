@@ -12,7 +12,9 @@
 if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 ?>
 
+<!---
 <p>template-parts/components/attachment_post-audio.php</p>
+--->
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 	<header class="entry__head">
