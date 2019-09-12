@@ -19,7 +19,35 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 
-$wtf__component_page_post_tpl_slug = apply_filters( 'wtf__component_page_post_tpl_slug', 'page_post');
-$wtf__component_page_post_tpl_name = apply_filters( 'wtf__component_page_post_tpl_name', null);
-get_template_part( "template-parts/components/{$wtf__component_page_post_tpl_slug}", $wtf__component_page_post_tpl_name );
-?>
+$post_type = get_post_type();
+
+$wtf__post_component_tpl_slug = "post_{$post_type}";
+$wtf__post_component_tpl_name = NULL;
+
+if ( 'attachment' === $post_type ) {
+	$post_mime_type = get_post_mime_type();
+	$post_mime_type_parts = explode( '/', $post_mime_type, 2 );
+	if ( count( $post_mime_type_parts ) === 2 ) {
+		$wtf__post_component_tpl_name = $post_mime_type_parts[0] . '-' . $post_mime_type_parts[1];
+	}
+	else {
+		$wtf__post_component_tpl_name = $post_mime_type_parts[0];
+	}
+}
+elseif ( 'post' === $post_type ) {
+	$post_format = get_post_format();
+	if ( FALSE !== $post_format ) {
+		$wtf__post_component_tpl_name = $post_format;
+	}
+}
+
+$wtf__post_component_tpl_slug = apply_filters( 'wtf__post_component_tpl_slug', $wtf__post_component_tpl_slug);
+$wtf__post_component_tpl_name = apply_filters( 'wtf__post_component_tpl_name', $wtf__post_component_tpl_name);
+get_template_part( "template-parts/components/{$wtf__post_component_tpl_slug}", $wtf__post_component_tpl_name );
+
+unset( $post_format );
+unset( $post_mime_type );
+unset( $post_mime_type_parts );
+unset( $post_type );
+unset( $wtf__post_component_tpl_name );
+unset( $wtf__post_component_tpl_slug );
