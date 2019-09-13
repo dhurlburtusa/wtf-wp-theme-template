@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 					<section class="posts-area posts-area--<?php echo WTF__PAGE_TEMPLATE_NAME; ?>">
 						<?php if ( is_home() && ! is_front_page() ) : ?>
 							<h1>
-								<span class="page__title sr-only"><?php single_post_title(); ?></span>
+								<span class="page__title"><?php single_post_title(); ?></span>
 							</h1>
 						<?php endif; ?>
 

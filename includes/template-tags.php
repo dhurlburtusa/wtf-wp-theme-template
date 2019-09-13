@@ -111,8 +111,6 @@ if ( ! function_exists( 'wtf__the_nav_menu' ) ) :
 				array(
 					'container' => null,
 					'depth' => 1,
-					'link_before' => '<span class="sr-only">',
-					'link_after' => '</span>',
 					'menu_class' => 'social-links-menu',
 					'theme_location' => 'social',
 				)
@@ -246,7 +244,7 @@ if ( ! function_exists( 'wtf__the_post_meta' ) ) :
 			$author_email = get_the_author_meta( 'user_email' );
 			$author_avatar_size = apply_filters( 'wtf__author_avatar_size', 49 );
 			printf(
-				'<span class="byline"><span class="author vcard">%1$s<span class="sr-only">%2$s </span> <a class="url fn n" href="%3$s">%4$s</a></span></span>',
+				'<span class="byline"><span class="author vcard">%1$s<span class="author__label"> %2$s</span> <a class="url fn n" href="%3$s">%4$s</a></span></span>',
 				get_avatar( $author_email, $author_avatar_size ),
 				_x( 'Author', 'Used before post author name.', 'wtf' ),
 				esc_url( get_author_posts_url( $post_author_id ) ),
@@ -262,7 +260,7 @@ if ( ! function_exists( 'wtf__the_post_meta' ) ) :
 		if ( current_theme_supports( 'post-formats', $format ) ) {
 			printf(
 				'<span class="entry__format">%1$s<a href="%2$s">%3$s</a></span>',
-				sprintf( '<span class="sr-only">%s </span>', _x( 'Format', 'Used before post format.', 'wtf' ) ),
+				sprintf( '<span class="label">%s </span>', _x( 'Format', 'Used before post format.', 'wtf' ) ),
 				esc_url( get_post_format_link( $format ) ),
 				get_post_format_string( $format )
 			);
@@ -275,7 +273,7 @@ if ( ! function_exists( 'wtf__the_post_meta' ) ) :
 
 		if ( ! is_singular() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="link link--comments">';
-			comments_popup_link( sprintf( __( 'Leave a comment<span class="sr-only"> on %s</span>', 'wtf' ), get_the_title() ) );
+			comments_popup_link( sprintf( __( 'Leave a comment on<span class="post-title"> %s</span>', 'wtf' ), get_the_title() ) );
 			echo '</span>';
 		}
 	}
@@ -307,7 +305,7 @@ if ( ! function_exists( 'wtf__the_post_dates' ) ) :
 		);
 
 		printf(
-			'<span class="posted-on"><span class="sr-only">%1$s </span><a href="%2$s" rel="bookmark">%3$s</a></span>',
+			'<span class="posted-on"><span class="label">%1$s </span><a href="%2$s" rel="bookmark">%3$s</a></span>',
 			_x( 'Posted on', 'Used before publish date.', 'wtf' ),
 			esc_url( get_permalink() ),
 			$time_string
@@ -334,7 +332,7 @@ if ( ! function_exists( 'wtf__the_post_categories' ) ) :
 
 		if ( $categories_list && wtf__is_categorized_blog() ) {
 			printf(
-				'<span class="cat-links"><span class="sr-only">%1$s </span>%2$s</span>',
+				'<span class="cat-links"><span class="label">%1$s </span>%2$s</span>',
 				_x( 'Categories', 'Used before category names.', 'wtf' ),
 				$categories_list
 			);
@@ -365,7 +363,7 @@ if ( ! function_exists( 'wtf__the_post_tags' ) ) :
 		);
 		if ( $tags_list && ! is_wp_error( $tags_list ) ) {
 			printf(
-				'<span class="tags-links"><span class="sr-only">%1$s </span>%2$s</span>',
+				'<span class="tags-links"><span class="label">%1$s </span>%2$s</span>',
 				_x( 'Tags', 'Used before tag names.', 'wtf' ),
 				$tags_list
 			);
@@ -388,7 +386,7 @@ if ( ! function_exists( 'wtf__the_edit_post_link' ) ) :
 		edit_post_link(
 			sprintf(
 				/* translators: %s: Name of current post */
-				__( 'Edit<span class="sr-only"> "%s"</span>', 'wtf' ),
+				__( 'Edit<span class="post-title"> "%s"</span>', 'wtf' ),
 				get_the_title()
 			),
 			'<span class="link link--edit">',
@@ -415,8 +413,8 @@ if ( ! function_exists( 'wtf__the_page_links' ) ) :
 				'after'       => '</div>',
 				'link_before' => '<span>',
 				'link_after'  => '</span>',
-				'pagelink'    => '<span class="sr-only">' . __( 'Page', 'wtf' ) . ' </span>%',
-				'separator'   => '<span class="sr-only">, </span>',
+				'pagelink'    => '<span class="label">' . __( 'Page', 'wtf' ) . ' </span>%',
+				'separator'   => '<span class="sep">, </span>',
 			)
 		);
 	}
@@ -443,7 +441,7 @@ if ( ! function_exists( 'wtf__the_posts_pagination' ) ) :
 			array(
 				'prev_text'          => __( 'Previous page', 'wtf' ),
 				'next_text'          => __( 'Next page', 'wtf' ),
-				'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Page', 'wtf' ) . ' </span>',
+				'before_page_number' => '<span class="label">' . __( 'Page', 'wtf' ) . ' </span>',
 			)
 		);
 	}
@@ -468,7 +466,7 @@ if ( ! function_exists( 'wtf__the_post_navigation' ) ) :
 			// Parent post navigation.
 			the_post_navigation(
 				array(
-					'prev_text' => _x( '<span class="meta-nav">Published in</span> <span class="post-title post-title--parent">%title</span>', 'Parent post link', 'wtf' ),
+					'prev_text' => _x( '<span class="label">Published in</span> <span class="post-title post-title--parent">%title</span>', 'Parent post link', 'wtf' ),
 				)
 			);
 		}
@@ -476,11 +474,9 @@ if ( ! function_exists( 'wtf__the_post_navigation' ) ) :
 			// Previous/next post navigation.
 			the_post_navigation(
 				array(
-					'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next', 'wtf' ) . '</span> ' .
-						'<span class="sr-only">' . __( 'Next post:', 'wtf' ) . '</span> ' .
+					'next_text' => '<span class="label">' . __( 'Next post:', 'wtf' ) . '</span> ' .
 						'<span class="post-title post-title--next">%title</span>',
-					'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Previous', 'wtf' ) . '</span> ' .
-						'<span class="sr-only">' . __( 'Previous post:', 'wtf' ) . '</span> ' .
+					'prev_text' => '<span class="label">' . __( 'Previous post:', 'wtf' ) . '</span> ' .
 						'<span class="post-title post-title--prev">%title</span>',
 				)
 			);
@@ -632,7 +628,7 @@ if ( ! function_exists( 'wtf__the_attachment_meta' ) ) :
 		if ( $metadata ) {
 			if ( wp_attachment_is( 'image' ) ) {
 				printf(
-					'<span class="link link--full-size"><span class="sr-only">%1$s </span><a href="%2$s">%3$s &times; %4$s</a></span>',
+					'<span class="link link--full-size"><span class="label">%1$s </span><a href="%2$s">%3$s &times; %4$s</a></span>',
 					esc_html_x( 'Full size', 'Used before full size attachment link.', 'wtf' ),
 					esc_url( wp_get_attachment_url() ),
 					absint( $metadata['width'] ),

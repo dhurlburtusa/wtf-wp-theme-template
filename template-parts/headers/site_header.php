@@ -30,7 +30,7 @@ $tagline = get_bloginfo( 'description', 'display' );
 
 		<?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
 			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#site-header-menu" aria-controls="primary-navigation social-navigation" aria-expanded="false" aria-label="Toggle Menu">
-				<span class="sr-only"><?php _e( 'Menu', 'wtf' ); ?></span>
+				<span class="navbar-toggler-text"><?php _e( 'Menu', 'wtf' ); ?></span>
 				<span class="navbar-toggler-icon"></span>
 			</button>
 

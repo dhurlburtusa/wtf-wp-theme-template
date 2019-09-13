@@ -139,7 +139,7 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 			/* translators: %s: Name of current post */
 			the_content(
 				sprintf(
-					__( 'Continue reading<span class="sr-only"> "%s"</span>', 'wtf' ),
+					__( 'Continue reading<span class="post-title"> "%s"</span>', 'wtf' ),
 					get_the_title()
 				)
 			);

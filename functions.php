@@ -329,7 +329,7 @@ if ( $set_up_theme ) :
 					'<a class="link link--more" href="%1$s">%2$s</a>',
 					esc_url( get_permalink( $post_id ) ),
 					/* translators: %s: Name of current post */
-					sprintf( __( 'Continue reading<span class="sr-only"> "%s"</span>', 'wtf' ), get_the_title( $post_id ) )
+					sprintf( __( 'Continue reading<span class="post-title"> "%s"</span>', 'wtf' ), get_the_title( $post_id ) )
 				);
 				$more_string = ' &hellip; ' . $link;
 			}
@@ -599,7 +599,7 @@ if ( $set_up_theme ) :
 
 			function wtf__action__wp_body_open__add_skip_content_link () {
 				/* TODO: Add a filter for main content fragment ID */
-				echo '<a class="sr-only" href="#content">' . __( 'Skip to content', 'wtf' ) . '</a>' . "\n";
+				echo '<a class="link  link--skip-to-content" href="#content">' . __( 'Skip to content', 'wtf' ) . '</a>' . "\n";
 			}
 			add_action( 'wp_body_open', 'wtf__action__wp_body_open__add_skip_content_link' );
 
