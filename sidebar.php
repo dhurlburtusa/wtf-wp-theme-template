@@ -11,7 +11,7 @@
 if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 ?>
 <?php if ( is_active_sidebar( 'sidebar-primary' ) ) : ?>
-	<aside role="complementary">
+	<aside>
 		<div class="widget-area widget-area--primary">
 			<?php dynamic_sidebar( 'sidebar-primary' ); ?>
 		</div>
