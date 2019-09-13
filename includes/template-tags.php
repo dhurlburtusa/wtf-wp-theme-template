@@ -195,7 +195,7 @@ if ( ! function_exists( 'wtf__the_featured_image' ) ) :
 		else :
 			$post_title = the_title_attribute( array( 'echo' => False ) );
 		?>
-			<a class="featured-image" href="<?php the_permalink(); ?>" aria-hidden="true">
+			<a class="link link--featured-image" href="<?php the_permalink(); ?>" aria-hidden="true">
 				<?php the_post_thumbnail( 'post-thumbnail', array( 'alt' => $post_title ) ); ?>
 			</a>
 <?php
@@ -244,7 +244,7 @@ if ( ! function_exists( 'wtf__the_post_meta' ) ) :
 			$author_email = get_the_author_meta( 'user_email' );
 			$author_avatar_size = apply_filters( 'wtf__author_avatar_size', 49 );
 			printf(
-				'<span class="byline"><span class="author vcard">%1$s<span class="author__label"> %2$s</span> <a class="url fn n" href="%3$s">%4$s</a></span></span>',
+				'<span class="byline"><span class="author vcard">%1$s<span class="author__label"> %2$s</span> <a class="link" href="%3$s">%4$s</a></span></span>',
 				get_avatar( $author_email, $author_avatar_size ),
 				_x( 'Author', 'Used before post author name.', 'wtf' ),
 				esc_url( get_author_posts_url( $post_author_id ) ),
@@ -259,7 +259,7 @@ if ( ! function_exists( 'wtf__the_post_meta' ) ) :
 		$format = get_post_format();
 		if ( current_theme_supports( 'post-formats', $format ) ) {
 			printf(
-				'<span class="entry__format">%1$s<a href="%2$s">%3$s</a></span>',
+				'<span class="entry__format">%1$s<a class="link" href="%2$s">%3$s</a></span>',
 				sprintf( '<span class="label">%s </span>', _x( 'Format', 'Used before post format.', 'wtf' ) ),
 				esc_url( get_post_format_link( $format ) ),
 				get_post_format_string( $format )
@@ -305,7 +305,7 @@ if ( ! function_exists( 'wtf__the_post_dates' ) ) :
 		);
 
 		printf(
-			'<span class="posted-on"><span class="label">%1$s </span><a href="%2$s" rel="bookmark">%3$s</a></span>',
+			'<span class="posted-on"><span class="label">%1$s </span><a class="link" href="%2$s" rel="bookmark">%3$s</a></span>',
 			_x( 'Posted on', 'Used before publish date.', 'wtf' ),
 			esc_url( get_permalink() ),
 			$time_string
@@ -628,7 +628,7 @@ if ( ! function_exists( 'wtf__the_attachment_meta' ) ) :
 		if ( $metadata ) {
 			if ( wp_attachment_is( 'image' ) ) {
 				printf(
-					'<span class="link link--full-size"><span class="label">%1$s </span><a href="%2$s">%3$s &times; %4$s</a></span>',
+					'<span class="label">%1$s </span><a class="link" href="%2$s">%3$s &times; %4$s</a>',
 					esc_html_x( 'Full size', 'Used before full size attachment link.', 'wtf' ),
 					esc_url( wp_get_attachment_url() ),
 					absint( $metadata['width'] ),

@@ -127,7 +127,7 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 			<span class="sticky-post"><?php _e( 'Featured', 'wtf' ); ?></span>
 		<?php endif; ?>
 
-		<h1 class="entry__title"><?php the_title( sprintf( '<a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a>' ); ?></h1>
+		<h1 class="entry__title"><?php the_title( sprintf( '<a class="link" href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a>' ); ?></h1>
 	</header><!-- .entry__head -->
 
 	<?php wtf__the_excerpt(); ?>

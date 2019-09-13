@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 		<?php the_author_meta( 'description' ); ?>
 	</p>
 	<address>
-		<a class="author__link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
+		<a class="link author__link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
 			<?php printf( __( 'View all posts by %s', 'wtf' ), get_the_author() ); ?>
 		</a>
 	</address>

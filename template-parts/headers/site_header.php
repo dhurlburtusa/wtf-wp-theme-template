@@ -20,7 +20,7 @@ $tagline = get_bloginfo( 'description', 'display' );
 			<?php wtf__the_custom_logo(); ?>
 
 			<span class="site-title">
-				<a href="<?php echo esc_url( $home_url ); ?>" rel="home"><?php echo $site_title; ?></a>
+				<a class="link" href="<?php echo esc_url( $home_url ); ?>" rel="home"><?php echo $site_title; ?></a>
 			</span>
 
 			<?php if ( $tagline || is_customize_preview() ) : ?>
@@ -64,7 +64,7 @@ $tagline = get_bloginfo( 'description', 'display' );
 			$custom_header_sizes = apply_filters( 'wtf__custom_header_sizes', '(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px' );
 		?>
 		<div class="header-image">
-			<a href="<?php echo esc_url( $home_url ); ?>" rel="home">
+			<a class="link" href="<?php echo esc_url( $home_url ); ?>" rel="home">
 				<img src="<?php header_image(); ?>" srcset="<?php echo esc_attr( wp_get_attachment_image_srcset( get_custom_header()->attachment_id ) ); ?>" sizes="<?php echo esc_attr( $custom_header_sizes ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
 			</a>
 		</div><!-- .header-image -->

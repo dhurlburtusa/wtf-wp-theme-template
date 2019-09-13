@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 			do_action( 'wtf__credits' );
 		?>
 		<span class="site-title">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+			<a class="link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 		</span>
 	</div><!-- .site-info -->
 </footer><!-- .site-footer -->
