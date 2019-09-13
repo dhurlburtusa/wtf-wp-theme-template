@@ -37,32 +37,13 @@ $tagline = get_bloginfo( 'description', 'display' );
 			<div class="site-header__menu collapse navbar-collapse justify-content-end" id="site-header-menu">
 				<?php if ( has_nav_menu( 'primary' ) ) : ?>
 					<nav class="navigation navigation--primary" id="primary-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'wtf' ); ?>">
-						<?php
-							wp_nav_menu(
-								array(
-									'theme_location' => 'primary',
-									'container' => null,
-									'menu_class' => 'navbar-nav',
-								)
-							);
-						?>
+						<?php wtf__the_nav_menu( 'primary' ); ?>
 					</nav><!-- .navigation--primary -->
 				<?php endif; ?>
 
 				<?php if ( has_nav_menu( 'social' ) ) : ?>
 					<nav class="navigation navigation--social" id="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Social Links Menu', 'wtf' ); ?>">
-						<?php
-							wp_nav_menu(
-								array(
-									'theme_location' => 'social',
-									'container' => null,
-									'menu_class'  => 'social-links-menu',
-									'depth'       => 1,
-									'link_before' => '<span class="sr-only">',
-									'link_after'  => '</span>',
-								)
-							);
-						?>
+						<?php wtf__the_nav_menu( 'social' ); ?>
 					</nav><!-- .navigation--social -->
 				<?php endif; ?>
 			</div><!-- .site-header__menu -->

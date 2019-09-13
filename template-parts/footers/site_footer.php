@@ -13,30 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 <footer class="site-footer" role="contentinfo">
 	<?php if ( has_nav_menu( 'primary' ) ) : ?>
 		<nav class="navigation navigation--primary" role="navigation" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'wtf' ); ?>">
-			<?php
-				wp_nav_menu(
-					array(
-						'menu_class'     => 'navbar-nav',
-						'theme_location' => 'primary',
-					)
-				);
-			?>
+			<?php wtf__the_nav_menu( 'primary' ); ?>
 		</nav><!-- .navigation--primary -->
 	<?php endif; ?>
 
 	<?php if ( has_nav_menu( 'social' ) ) : ?>
 		<nav class="navigation navigation--social" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'wtf' ); ?>">
-			<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'social',
-						'menu_class'     => 'social-links-menu',
-						'depth'          => 1,
-						'link_before'    => '<span class="sr-only">',
-						'link_after'     => '</span>',
-					)
-				);
-			?>
+			<?php wtf__the_nav_menu( 'social' ); ?>
 		</nav><!-- .navigation--social -->
 	<?php endif; ?>
 

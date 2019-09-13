@@ -97,6 +97,39 @@ if ( ! function_exists( 'wtf__the_footer' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'wtf__the_nav_menu' ) ) :
+	/**
+	 *
+	 * Create your own `wtf__the_nav_menu` function to override in a child
+	 * theme.
+	 *
+	 * @since WTF 0.0.0-alpha
+	 */
+	function wtf__the_nav_menu ( $menu_name ) {
+		if ( 'social' === $menu_name ) {
+			wp_nav_menu(
+				array(
+					'container' => null,
+					'depth' => 1,
+					'link_before' => '<span class="sr-only">',
+					'link_after' => '</span>',
+					'menu_class' => 'social-links-menu',
+					'theme_location' => 'social',
+				)
+			);
+		}
+		elseif ( 'primary' === $menu_name ) {
+			wp_nav_menu(
+				array(
+					'container' => null,
+					'menu_class' => 'navbar-nav',
+					'theme_location' => 'primary',
+				)
+			);
+		}
+	}
+endif;
+
 if ( ! function_exists( 'wtf__the_custom_logo' ) ) :
 	/**
 	 * Outputs the optional custom logo.
