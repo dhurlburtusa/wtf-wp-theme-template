@@ -10,7 +10,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 ?>
-<footer class="site-footer container" role="contentinfo">
+<footer class="site-footer" role="contentinfo">
 	<?php if ( has_nav_menu( 'primary' ) ) : ?>
 		<nav class="navigation navigation--primary" role="navigation" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'wtf' ); ?>">
 			<?php

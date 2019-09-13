@@ -15,11 +15,11 @@ $site_title = get_bloginfo( 'name', 'display' );
 $tagline = get_bloginfo( 'description', 'display' );
 ?>
 <header class="site-header" role="banner">
-	<div class="site-header__main navbar navbar-dark navbar-expand-md bg-dark">
+	<div class="site-header__main navbar navbar-expand-md">
 		<div class="site-nameplate navbar-brand">
 			<?php wtf__the_custom_logo(); ?>
 
-			<span class="site-title h2">
+			<span class="site-title">
 				<a href="<?php echo esc_url( $home_url ); ?>" rel="home"><?php echo $site_title; ?></a>
 			</span>
 
