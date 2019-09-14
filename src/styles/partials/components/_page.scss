@@ -1,0 +1,20 @@
+/**
+ * Page:
+ */
+
+.pg {
+	display: flex;
+	flex-direction: column;
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		flex: 1 0 auto;
+	}
+
+	// &__body__content {
+	// }
+
+	// &__sidebar {
+	// }
+}

@@ -9,18 +9,18 @@
 @import 'partials/fonts';
 
 @import 'partials/elements';
-@import 'partials/page-layout';
-@import 'partials/accessibility';
 
 @import 'partials/components/comments';
 @import 'partials/components/featured-images';
 @import 'partials/components/gallery';
 @import 'partials/components/navigation';
+@import 'partials/components/page';
 @import 'partials/components/posts';
 @import 'partials/components/site-footer';
 @import 'partials/components/site-header';
+
+@import 'partials/accessibility';
 @import 'partials/multisite';
 @import 'partials/site-media-queries';
-
 @import 'partials/svg';
 @import 'partials/utilities';
