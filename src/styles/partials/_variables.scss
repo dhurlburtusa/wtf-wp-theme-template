@@ -1,25 +1,25 @@
 /**
- * Variables:
- *
- * Variables let you store information to be reused anywhere in a style sheet.
- *
- * Variables are set just like CSS properties, placing a `$` symbol before the name
- * of the variable (`$var-name`). They may also be set placing a `$` symbol before
- * two parentheses wrapping the name of the variable (`$(var-name)`), or by
- * wrapping the `$` symbol and variable name in curly braces preceded by a hash
- * (`#{$var-name}`).
- *
- *    $font-size: 1.25em;
- *    $font-stack: "Helvetica Neue", sans-serif;
- *    $primary-color: #333;
- *
- *    body {
- *      font: $font-size $(font-stack);
- *      color: #{$primary-color};
- *    }
- *
- * Note: To use `#{$var-name}` without issues, you will need to include the PostCSS
- * SCSS Syntax.
- *
- * See https://github.com/jonathantneal/postcss-advanced-variables#variables.
- */
+ | Variable Declarations:
+ |
+ | Variables let you store information to be reused anywhere in a style sheet.
+ |
+ | Variables are set just like CSS properties, placing a `$` symbol before the name
+ | of the variable (`$var-name`). They may also be set placing a `$` symbol before
+ | two parentheses wrapping the name of the variable (`$(var-name)`), or by
+ | wrapping the `$` symbol and variable name in curly braces preceded by a hash
+ | (`#{$var-name}`).
+ |
+ |     $font-size: 1.25em;
+ |     $font-stack: "Helvetica Neue", sans-serif;
+ |     $primary-color: #333;
+ |
+ |     body {
+ |       font: $font-size $(font-stack);
+ |       color: #{$primary-color};
+ |     }
+ |
+ | Note: To use `#{$var-name}` without issues, you will need to include the PostCSS
+ | SCSS Syntax.
+ |
+ | See https://github.com/jonathantneal/postcss-advanced-variables#variables.
+ ============================================================================ */
