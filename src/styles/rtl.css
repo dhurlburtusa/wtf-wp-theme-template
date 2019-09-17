@@ -68,7 +68,7 @@ input,
 select,
 textarea,
 .post-password-form label,
-.navigation--primary,
+.navigation--site--primary,
 .pagination,
 .navigation--attachments,
 .widget .widget-title,
@@ -183,12 +183,12 @@ input[type="search"].search-field {
  * 5.0 - Navigation
  */
 
-.navigation--primary ul ul {
+.navigation--site--primary ul ul {
 	margin-right: 0.875em;
 	margin-left: auto;
 }
 
-.navigation--primary .menu-item-has-children > a {
+.navigation--site--primary .menu-item-has-children > a {
 	margin-right: auto;
 	margin-left: 56px;
 }
@@ -205,7 +205,7 @@ input[type="search"].search-field {
 	right: 1px;
 }
 
-.navigation--social li {
+.navigation--social--primary li {
 	float: right;
 	margin: 0 0 0.4375em 0.4375em;
 }
@@ -480,55 +480,55 @@ body:not(.search-results) .entry__summary .alignleft {
  */
 
 @media screen and (min-width: 56.875em) {
-	.navigation--primary > li {
+	.navigation--site--primary > li {
 		float: right;
 	}
 
-	.navigation--primary ul ul {
+	.navigation--site--primary ul ul {
 		left: auto;
 		margin: 0;
 		right: -999em;
 	}
 
-	.navigation--primary ul ul:before {
+	.navigation--site--primary ul ul:before {
 		left: 9px;
 		right: auto;
 	}
 
-	.navigation--primary ul ul:after {
+	.navigation--site--primary ul ul:after {
 		left: 11px;
 		right: auto;
 	}
 
-	.navigation--primary li:hover > ul,
-	.navigation--primary li.focus > ul {
+	.navigation--site--primary li:hover > ul,
+	.navigation--site--primary li.focus > ul {
 		left: 0;
 		right: auto;
 	}
 
-	.navigation--primary ul ul li:hover > ul,
-	.navigation--primary ul ul li.focus > ul {
+	.navigation--site--primary ul ul li:hover > ul,
+	.navigation--site--primary ul ul li.focus > ul {
 		left: 100%;
 		right: auto;
 	}
 
-	.navigation--primary .menu-item-has-children > a {
+	.navigation--site--primary .menu-item-has-children > a {
 		margin: 0;
 		padding-right: 0.875em;
 		padding-left: 2.25em;
 	}
 
-	.navigation--primary .menu-item-has-children > a:after {
+	.navigation--site--primary .menu-item-has-children > a:after {
 		left: 0.625em;
 		right: auto;
 	}
 
-	.navigation--primary ul ul .menu-item-has-children > a {
+	.navigation--site--primary ul ul .menu-item-has-children > a {
 		padding-right: 0.875em;
 		padding-left: 2.0625em;
 	}
 
-	.navigation--primary ul ul .menu-item-has-children > a:after {
+	.navigation--site--primary ul ul .menu-item-has-children > a:after {
 		left: 0.5625em;
 		right: auto;
 		top: 0.8125em;

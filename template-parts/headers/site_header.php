@@ -28,23 +28,23 @@ $tagline = get_bloginfo( 'description', 'display' );
 			<?php endif; ?>
 		</div><!-- .site-nameplate -->
 
-		<?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
-			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#site-header-menu" aria-controls="primary-navigation social-navigation" aria-expanded="false" aria-label="Toggle Menu">
+		<?php if ( has_nav_menu( 'site--primary' ) || has_nav_menu( 'social--primary' ) ) : ?>
+			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#site-header-menu" aria-controls="primary-site-navigation primary-social-navigation" aria-expanded="false" aria-label="Toggle Menu">
 				<span class="navbar-toggler-text"><?php _e( 'Menu', 'wtf' ); ?></span>
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="site-header__menu collapse navbar-collapse justify-content-end" id="site-header-menu">
-				<?php if ( has_nav_menu( 'primary' ) ) : ?>
-					<nav class="navigation navigation--primary" id="primary-navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'wtf' ); ?>">
-						<?php wtf__the_nav_menu( 'primary' ); ?>
-					</nav><!-- .navigation--primary -->
+				<?php if ( has_nav_menu( 'site--primary' ) ) : ?>
+					<nav class="navigation navigation--site navigation--site--primary" id="primary-site-navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'wtf' ); ?>">
+						<?php wtf__the_nav_menu( 'site--primary' ); ?>
+					</nav><!-- .navigation--site--primary -->
 				<?php endif; ?>
 
-				<?php if ( has_nav_menu( 'social' ) ) : ?>
-					<nav class="navigation navigation--social" id="social-navigation" aria-label="<?php esc_attr_e( 'Social Links Menu', 'wtf' ); ?>">
-						<?php wtf__the_nav_menu( 'social' ); ?>
-					</nav><!-- .navigation--social -->
+				<?php if ( has_nav_menu( 'social--primary' ) ) : ?>
+					<nav class="navigation navigation--social navigation--social--primary" id="primary-social-navigation" aria-label="<?php esc_attr_e( 'Social Links Menu', 'wtf' ); ?>">
+						<?php wtf__the_nav_menu( 'social--primary' ); ?>
+					</nav><!-- .navigation--social--primary -->
 				<?php endif; ?>
 			</div><!-- .site-header__menu -->
 		<?php endif; ?>

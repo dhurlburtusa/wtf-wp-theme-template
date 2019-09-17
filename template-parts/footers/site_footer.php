@@ -11,16 +11,16 @@
 if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 ?>
 <footer class="site-footer" role="contentinfo">
-	<?php if ( has_nav_menu( 'primary' ) ) : ?>
-		<nav class="navigation navigation--primary" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'wtf' ); ?>">
-			<?php wtf__the_nav_menu( 'primary' ); ?>
-		</nav><!-- .navigation--primary -->
+	<?php if ( has_nav_menu( 'site--primary' ) ) : ?>
+		<nav class="navigation navigation--site navigation--site--primary" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'wtf' ); ?>">
+			<?php wtf__the_nav_menu( 'site--primary' ); ?>
+		</nav><!-- .navigation--site--primary -->
 	<?php endif; ?>
 
-	<?php if ( has_nav_menu( 'social' ) ) : ?>
-		<nav class="navigation navigation--social" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'wtf' ); ?>">
-			<?php wtf__the_nav_menu( 'social' ); ?>
-		</nav><!-- .navigation--social -->
+	<?php if ( has_nav_menu( 'social--primary' ) ) : ?>
+		<nav class="navigation navigation--social navigation--social--primary" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'wtf' ); ?>">
+			<?php wtf__the_nav_menu( 'social--primary' ); ?>
+		</nav><!-- .navigation--social--primary -->
 	<?php endif; ?>
 
 	<div class="site-info">

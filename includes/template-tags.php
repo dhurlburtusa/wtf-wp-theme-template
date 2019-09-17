@@ -106,22 +106,22 @@ if ( ! function_exists( 'wtf__the_nav_menu' ) ) :
 	 * @since WTF 0.0.0-alpha
 	 */
 	function wtf__the_nav_menu ( $menu_name ) {
-		if ( 'social' === $menu_name ) {
+		if ( 'social--primary' === $menu_name ) {
 			wp_nav_menu(
 				array(
 					'container' => null,
 					'depth' => 1,
 					'menu_class' => 'social-links-menu',
-					'theme_location' => 'social',
+					'theme_location' => 'social--primary',
 				)
 			);
 		}
-		elseif ( 'primary' === $menu_name ) {
+		elseif ( 'site--primary' === $menu_name ) {
 			wp_nav_menu(
 				array(
 					'container' => null,
 					'menu_class' => 'navbar-nav',
-					'theme_location' => 'primary',
+					'theme_location' => 'site--primary',
 				)
 			);
 		}

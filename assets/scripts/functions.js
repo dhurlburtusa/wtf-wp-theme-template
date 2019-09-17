@@ -48,7 +48,7 @@
 // 	// menuToggle       = siteHeader.find( '.navbar-toggler' );
 // 	// siteHeaderMenu   = siteHeader.find( '#site-header-menu' );
 // 	// siteNavigation   = siteHeader.find( '.navigation--primary' );
-// 	// socialNavigation = siteHeader.find( '#social-navigation' );
+// 	// socialNavigation = siteHeader.find( '#primary-social-navigation' );
 
 // 	// // Enable menuToggle.
 // 	// ( function () {
@@ -125,7 +125,7 @@
 // 	// 			socialNavigation.attr( 'aria-expanded', 'false' );
 // 	// 		}
 
-// 	// 		menuToggle.attr( 'aria-controls', 'primary-navigation social-navigation' );
+// 	// 		menuToggle.attr( 'aria-controls', 'primary-site-navigation primary-social-navigation' );
 // 	// 	} else {
 // 	// 		menuToggle.removeAttr( 'aria-expanded' );
 // 	// 		siteNavigation.removeAttr( 'aria-expanded' );

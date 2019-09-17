@@ -235,8 +235,8 @@ if ( $set_up_theme ) :
 			// This theme uses wp_nav_menu() in two locations.
 			register_nav_menus(
 				array(
-					'primary' => __( 'Primary Menu', 'wtf' ),
-					'social' => __( 'Social Links Menu', 'wtf' ),
+					'site--primary' => __( 'Primary Site Menu', 'wtf' ),
+					'social--primary' => __( 'Primary Social Media Menu', 'wtf' ),
 				)
 			);
 

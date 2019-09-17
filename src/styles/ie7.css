@@ -79,21 +79,21 @@ Description: IE7 specific style.
 	display: none;
 }
 
-.navigation--primary ul ul {
+.navigation--site--primary ul ul {
 	display: block;
 }
 
-.navigation--social {
+.navigation--social--primary {
 	margin-top: 1.75em;
 }
 
-.navigation--social a {
+.navigation--social--primary a {
 	height: auto;
 	padding: 3px 7px;
 	width: auto;
 }
 
-.navigation--social .sr-only {
+.navigation--social--primary .sr-only {
 	height: auto;
 	position: relative !important;
 	width: auto;

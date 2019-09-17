@@ -575,12 +575,12 @@ function wtf__get_color_scheme_css ( $colors ) {
 	.navbar-toggler:hover,
 	.navbar-toggler:focus,
 	a,
-	.navigation--primary a:hover,
-	.navigation--primary a:focus,
+	.navigation--site--primary a:hover,
+	.navigation--site--primary a:focus,
 	.dropdown-toggle:hover,
 	.dropdown-toggle:focus,
-	.navigation--social a:hover:before,
-	.navigation--social a:focus:before,
+	.navigation--social--primary a:hover:before,
+	.navigation--social--primary a:focus:before,
 	.tagcloud a:hover,
 	.tagcloud a:focus,
 	.site-nameplate .site-title a:hover,
@@ -646,10 +646,10 @@ function wtf__get_color_scheme_css ( $colors ) {
 	body,
 	blockquote cite,
 	blockquote small,
-	.navigation--primary a,
+	.navigation--site--primary a,
 	.navbar-toggler,
 	.dropdown-toggle,
-	.navigation--social a,
+	.navigation--social--primary a,
 	.pagination a:hover,
 	.pagination a:focus,
 	.widget-title a,
@@ -767,10 +767,10 @@ function wtf__get_color_scheme_css ( $colors ) {
 	input[type="tel"],
 	input[type="number"],
 	textarea,
-	.navigation--primary li,
+	.navigation--site--primary li,
 	.navbar-toggler,
 	.dropdown-toggle:after,
-	.navigation--social a,
+	.navigation--social--primary a,
 	.navigation--attachments,
 	.tagcloud a,
 	.entry__content,
@@ -794,26 +794,26 @@ function wtf__get_color_scheme_css ( $colors ) {
 	}
 
 	@media screen and (min-width: 56.875em) {
-		.navigation--primary li:hover > a,
-		.navigation--primary li.focus > a {
+		.navigation--site--primary li:hover > a,
+		.navigation--site--primary li.focus > a {
 			color: {$colors['link_color']};
 		}
 
-		.navigation--primary ul ul,
-		.navigation--primary ul ul li {
+		.navigation--site--primary ul ul,
+		.navigation--site--primary ul ul li {
 			border-color: {$colors['border_color']};
 		}
 
-		.navigation--primary ul ul:before {
+		.navigation--site--primary ul ul:before {
 			border-top-color: {$colors['border_color']};
 			border-bottom-color: {$colors['border_color']};
 		}
 
-		.navigation--primary ul ul li {
+		.navigation--site--primary ul ul li {
 			background-color: {$colors['page_background_color']};
 		}
 
-		.navigation--primary ul ul:after {
+		.navigation--site--primary ul ul:after {
 			border-top-color: {$colors['page_background_color']};
 			border-bottom-color: {$colors['page_background_color']};
 		}
@@ -907,11 +907,11 @@ function wtf__page_background_color_css () {
 		}
 
 		@media screen and (min-width: 56.875em) {
-			.navigation--primary ul ul li {
+			.navigation--site--primary ul ul li {
 				background-color: %1$s;
 			}
 
-			.navigation--primary ul ul:after {
+			.navigation--site--primary ul ul:after {
 				border-top-color: %1$s;
 				border-bottom-color: %1$s;
 			}
@@ -945,12 +945,12 @@ function wtf__link_color_css () {
 		.navbar-toggler:hover,
 		.navbar-toggler:focus,
 		a,
-		.navigation--primary a:hover,
-		.navigation--primary a:focus,
+		.navigation--site--primary a:hover,
+		.navigation--site--primary a:focus,
 		.dropdown-toggle:hover,
 		.dropdown-toggle:focus,
-		.navigation--social a:hover:before,
-		.navigation--social a:focus:before,
+		.navigation--social--primary a:hover:before,
+		.navigation--social--primary a:focus:before,
 		.tagcloud a:hover,
 		.tagcloud a:focus,
 		.site-nameplate .site-title a:hover,
@@ -1013,8 +1013,8 @@ function wtf__link_color_css () {
 		}
 
 		@media screen and (min-width: 56.875em) {
-			.navigation--primary li:hover > a,
-			.navigation--primary li.focus > a {
+			.navigation--site--primary li:hover > a,
+			.navigation--site--primary li.focus > a {
 				color: %1$s;
 			}
 		}
@@ -1058,10 +1058,10 @@ function wtf__main_text_color_css () {
 		body,
 		blockquote cite,
 		blockquote small,
-		.navigation--primary a,
+		.navigation--site--primary a,
 		.navbar-toggler,
 		.dropdown-toggle,
-		.navigation--social a,
+		.navigation--social--primary a,
 		.pagination a:hover,
 		.pagination a:focus,
 		.widget-title a,
@@ -1130,10 +1130,10 @@ function wtf__main_text_color_css () {
 		input[type="tel"],
 		input[type="number"],
 		textarea,
-		.navigation--primary li,
+		.navigation--site--primary li,
 		.navbar-toggler,
 		.dropdown-toggle:after,
-		.navigation--social a,
+		.navigation--social--primary a,
 		.navigation--attachments,
 		.tagcloud a,
 		.entry__content,
@@ -1157,12 +1157,12 @@ function wtf__main_text_color_css () {
 		}
 
 		@media screen and (min-width: 56.875em) {
-			.navigation--primary ul ul,
-			.navigation--primary ul ul li {
+			.navigation--site--primary ul ul,
+			.navigation--site--primary ul ul li {
 				border-color: %2$s;
 			}
 
-			.navigation--primary ul ul:before {
+			.navigation--site--primary ul ul:before {
 				border-top-color: %2$s;
 				border-bottom-color: %2$s;
 			}

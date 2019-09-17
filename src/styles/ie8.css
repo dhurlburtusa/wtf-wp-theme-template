@@ -77,7 +77,7 @@ code {
 	padding: 1.3125em 0;
 }
 
-.site-header .navigation--primary + .navigation--social {
+.site-header .navigation--site--primary + .navigation--social--primary {
 	margin-top: 2.625em;
 }
 
@@ -178,8 +178,8 @@ code {
 	margin-bottom: 5.25em;
 }
 
-.site-footer .navigation--primary,
-.site-footer .navigation--social {
+.site-footer .navigation--site--primary,
+.site-footer .navigation--social--primary {
 	display: none;
 }
 
