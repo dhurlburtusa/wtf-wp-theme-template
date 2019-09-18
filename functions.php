@@ -62,6 +62,114 @@ if ( $set_up_theme ) :
 		do_action( 'wtf__debug' );
 	}
 
+	if ( ! function_exists( 'wtf__filter__wtf__theme_support' ) ) :
+		function &wtf__filter__wtf__theme_support ( $theme_support ) {
+
+			$theme_support['menus'] = array(
+				'site--primary' => __( 'Primary Site Menu', 'wtf' ),
+				'site--Secondary' => __( 'Secondary Site Menu', 'wtf' ),
+				'social--primary' => __( 'Primary Social Media Menu', 'wtf' ),
+				'social--Secondary' => __( 'Secondary Social Media Menu', 'wtf' ),
+			);
+
+			// $theme_support['starter-content'] = array(
+			// 	'attachments' => array(
+			// 		'featured-image-logo' => array(
+			// 			'file' => 'assets/images/featured-logo.jpg',
+			// 			'post_content' => 'Attachment Description',
+			// 			'post_excerpt' => 'Attachment Caption',
+			// 			'post_title' => 'Featured Logo',
+			// 		),
+			// 	),
+			// 	'posts' => array(
+			// 		'about' => array(
+			// 			// Use a page template with the predefined about page.
+			// 			'template' => 'sample-about-page-template.php',
+			// 		),
+			// 		'blog' => array(
+			// 			// Use a page template with the predefined blog index page.
+			// 			'template' => 'sample-blog-page-template.php',
+			// 		),
+			// 		'contact' => array(
+			// 			// Use a page template with the predefined contact page.
+			// 			'template' => 'sample-contact-page-template.php',
+			// 		),
+			// 		'custom' => array(
+			// 			'comment_status' => '',
+			// 			'menu_order' => '',
+			// 			'post_content' => '',
+			// 			'post_excerpt' => '',
+			// 			'post_name' => '',
+			// 			'post_title' => 'Custom Post',
+			// 			'post_type' => 'post',
+			// 			'thumbnail' => '{{featured-image-logo}}',
+			// 		),
+			// 		'home' => array(
+			// 			// Use a page template with the predefined home page.
+			// 			'template' => 'sample-home-page-template.php',
+			// 		),
+			// 		'homepage-section' => array(
+			// 			// Use a page template with the predefined page.
+			// 			'template' => 'sample-homepage-section-template.php',
+			// 		),
+			// 		'news' => array(
+			// 			// Use a page template with the predefined page.
+			// 			'template' => 'sample-news-page-template.php',
+			// 		),
+			// 	),
+			// 	'widgets' => array(
+			// 		'sidebar-1' => array(
+			// 			'meta_custom' => array(
+			// 				'meta',
+			// 				array(
+			// 					'title' => 'Pre-hydrated meta widget.',
+			// 				)
+			// 			),
+			// 		),
+			// 	),
+			// );
+
+			$theme_support['widgets'] = array(
+				array(
+					'name'          => __( 'Sidebar (Primary)', 'wtf' ),
+					'id'            => 'sidebar-primary',
+					'description'   => __( 'Add widgets here to appear in the primary sidebar.', 'wtf' ),
+					// The class is prepended	with `sidebar-` and used in the Appearance > Widgets page in the WP admin.
+					'class'         => '-primary',
+					'before_widget' => '<div class="widget %2$s" id="%1$s">',
+					'after_widget'  => '</div>',
+					'before_title'  => '<div class="widget__head"><span class="widget-title">',
+					'after_title'   => '</span></div>',
+				),
+				array(
+					'name'          => __( 'Bottom Widgets (Primary)', 'wtf' ),
+					'id'            => 'sidebar-secondary-primary',
+					'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'wtf' ),
+					// The class is prepended	with `sidebar-` and used in the Appearance > Widgets page in the WP admin.
+					'class'         => '-secondary--primary',
+					'before_widget' => '<div class="widget %2$s" id="%1$s">',
+					'after_widget'  => '</div>',
+					'before_title'  => '<div class="widget__head"><span class="widget-title">',
+					'after_title'   => '</span></div>',
+				),
+				array(
+					'name'          => __( 'Bottom Widgets (Secondary)', 'wtf' ),
+					'id'            => 'sidebar-secondary-secondary',
+					'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'wtf' ),
+					// The class is prepended	with `sidebar-` and used in the Appearance > Widgets page in the WP admin.
+					'class'         => '-secondary--secondary',
+					'before_widget' => '<div class="widget %2$s" id="%1$s">',
+					'after_widget'  => '</div>',
+					'before_title'  => '<div class="widget__head"><span class="widget-title">',
+					'after_title'   => '</span></div>',
+				),
+			);
+
+			return $theme_support;
+		}
+	endif;
+	add_filter( 'wtf__theme_support', 'wtf__filter__wtf__theme_support' );
+
 	if ( ! function_exists( 'wtf__action__after_theme_setup' ) ) :
 		/**
 		 * Sets up theme defaults and registers support for various WordPress features.
@@ -85,160 +193,7 @@ if ( $set_up_theme ) :
 			*/
 			load_theme_textdomain( 'wtf' );
 
-			// Add default posts and comments RSS feed links to head.
-			add_theme_support( 'automatic-feed-links' );
-
-			/*
-			* Enable support for custom logo.
-			*
-			* @since WTF 0.0.0-alpha
-			*/
-			add_theme_support(
-				'custom-logo',
-				array(
-					'height' => 240,
-					'width' => 240,
-					'flex-height' => true,
-				)
-			);
-
-			// Indicate widget sidebars can use selective refresh in the Customizer.
-			add_theme_support( 'customize-selective-refresh-widgets' );
-
-			// Add support for custom color scheme.
-			add_theme_support(
-				'editor-color-palette',
-				array(
-					array(
-						'name'  => __( 'Dark Gray', 'wtf' ),
-						'slug'  => 'dark-gray',
-						'color' => '#1a1a1a',
-					),
-					array(
-						'name'  => __( 'Medium Gray', 'wtf' ),
-						'slug'  => 'medium-gray',
-						'color' => '#686868',
-					),
-					array(
-						'name'  => __( 'Light Gray', 'wtf' ),
-						'slug'  => 'light-gray',
-						'color' => '#e5e5e5',
-					),
-					array(
-						'name'  => __( 'White', 'wtf' ),
-						'slug'  => 'white',
-						'color' => '#fff',
-					),
-					array(
-						'name'  => __( 'Blue Gray', 'wtf' ),
-						'slug'  => 'blue-gray',
-						'color' => '#4d545c',
-					),
-					array(
-						'name'  => __( 'Bright Blue', 'wtf' ),
-						'slug'  => 'bright-blue',
-						'color' => '#007acc',
-					),
-					array(
-						'name'  => __( 'Light Blue', 'wtf' ),
-						'slug'  => 'light-blue',
-						'color' => '#9adffd',
-					),
-					array(
-						'name'  => __( 'Dark Brown', 'wtf' ),
-						'slug'  => 'dark-brown',
-						'color' => '#402b30',
-					),
-					array(
-						'name'  => __( 'Medium Brown', 'wtf' ),
-						'slug'  => 'medium-brown',
-						'color' => '#774e24',
-					),
-					array(
-						'name'  => __( 'Dark Red', 'wtf' ),
-						'slug'  => 'dark-red',
-						'color' => '#640c1f',
-					),
-					array(
-						'name'  => __( 'Bright Red', 'wtf' ),
-						'slug'  => 'bright-red',
-						'color' => '#ff675f',
-					),
-					array(
-						'name'  => __( 'Yellow', 'wtf' ),
-						'slug'  => 'yellow',
-						'color' => '#ffef8e',
-					),
-				)
-			);
-
-			// Load regular editor styles into the new block-based editor.
-			add_theme_support( 'editor-styles' );
-
-			/*
-			* Switch default core markup for search form, comment form, and comments
-			* to output valid HTML5.
-			*/
-			add_theme_support(
-				'html5',
-				array(
-					'search-form',
-					'comment-form',
-					'comment-list',
-					'gallery',
-					'caption',
-				)
-			);
-
-			/*
-			* Enable support for Post Formats.
-			*
-			* See: https://codex.wordpress.org/Post_Formats
-			*/
-			add_theme_support(
-				'post-formats',
-				array(
-					'aside',
-					'image',
-					'video',
-					'quote',
-					'link',
-					'gallery',
-					'status',
-					'audio',
-					'chat',
-				)
-			);
-
-			/*
-			* Enable support for Post Thumbnails (aka Feature Image) on posts and pages.
-			*
-			* @link https://developer.wordpress.org/reference/functions/add_theme_support/#post-thumbnails
-			*/
-			add_theme_support( 'post-thumbnails' );
-			set_post_thumbnail_size( 1200, 9999 );
-
-			// Add support for responsive embeds.
-			add_theme_support( 'responsive-embeds' );
-
-			/*
-			* Let WordPress manage the document title.
-			* By adding theme support, we declare that this theme does not use a
-			* hard-coded <title> tag in the document head, and expect WordPress to
-			* provide it for us.
-			*/
-			add_theme_support( 'title-tag' );
-
-			// Load default block styles.
-			add_theme_support( 'wp-block-styles' );
-
-			// This theme uses wp_nav_menu() in two locations.
-			register_nav_menus(
-				array(
-					'site--primary' => __( 'Primary Site Menu', 'wtf' ),
-					'social--primary' => __( 'Primary Social Media Menu', 'wtf' ),
-				)
-			);
+			wtf__add_theme_support();
 
 			/*
 			* This theme styles the visual editor to resemble the theme style,
@@ -337,25 +292,6 @@ if ( $set_up_theme ) :
 		}
 	endif;
 	add_filter( 'excerpt_more', 'wtf__filter__excerpt_more' );
-
-	if ( ! function_exists( 'wtf__action__widgets_init' ) ) :
-		/**
-		 * Registers a widget area.
-		 *
-		 * Create your own `wtf__action__widgets_init` function to override in a child
-		 * theme.
-		 *
-		 * @link https://developer.wordpress.org/reference/functions/register_sidebar/
-		 *
-		 * @since WTF 0.0.0-alpha
-		 */
-		function wtf__action__widgets_init() {
-			wtf__register_primary_sidebar();
-			wtf__register_secondary_primary_sidebar();
-			wtf__register_secondary_secondary_sidebar();
-		}
-	endif;
-	add_action( 'widgets_init', 'wtf__action__widgets_init' );
 
 	if ( ! function_exists( 'wtf__action__enqueue_block_editor_assets' ) ) :
 		/**
