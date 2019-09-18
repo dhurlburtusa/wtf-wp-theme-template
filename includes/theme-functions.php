@@ -169,7 +169,7 @@ function wtf__hex2rgb ( $color ) {
  * @return bool True if there is more than one category, false otherwise.
  */
 function wtf__is_categorized_blog () {
-	if ( false === ( $all_the_cool_cats = get_transient( 'wtf__categories' ) ) ) {
+	if ( FALSE === ( $all_the_cool_cats = get_transient( 'wtf__categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories(
 			array(
@@ -187,10 +187,10 @@ function wtf__is_categorized_blog () {
 
 	if ( $all_the_cool_cats > 1 || is_preview() ) {
 		// This blog has more than 1 category so wtf__is_categorized_blog should return true.
-		return true;
+		return TRUE;
 	} else {
 		// This blog has only 1 category so wtf__is_categorized_blog should return false.
-		return false;
+		return FALSE;
 	}
 }
 

@@ -35,7 +35,7 @@ $comments_number = get_comments_number();
 				wp_list_comments(
 					array(
 						'style'       => 'ol',
-						'short_ping'  => true,
+						'short_ping'  => TRUE,
 						'avatar_size' => 42,
 					)
 				);

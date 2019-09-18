@@ -18,8 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 
 <nav class="navigation navigation--attachments">
 	<div class="nav-links">
-		<div class="nav-previous"><?php previous_image_link( false, __( 'Previous Image', 'wtf' ) ); ?></div>
-		<div class="nav-next"><?php next_image_link( false, __( 'Next Image', 'wtf' ) ); ?></div>
+		<div class="nav-previous"><?php previous_image_link( FALSE, __( 'Previous Image', 'wtf' ) ); ?></div>
+		<div class="nav-next"><?php next_image_link( FALSE, __( 'Next Image', 'wtf' ) ); ?></div>
 	</div>
 </nav>
 

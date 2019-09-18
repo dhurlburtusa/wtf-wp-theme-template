@@ -35,7 +35,7 @@ if ( ! function_exists( 'wtf__the_document' ) ) :
 		do_action( 'wtf__document_init' );
 
 		$wtf__document_tpl_slug = apply_filters( 'wtf__document_tpl_slug', 'document');
-		$wtf__document_tpl_name = apply_filters( 'wtf__document_tpl_name', null);
+		$wtf__document_tpl_name = apply_filters( 'wtf__document_tpl_name', NULL);
 		get_template_part( "template-parts/{$wtf__document_tpl_slug}", $wtf__document_tpl_name );
 	}
 endif;
@@ -77,7 +77,7 @@ if ( ! function_exists( 'wtf__the_header' ) ) :
 	 */
 	function wtf__the_header () {
 		$wtf__header_tpl_slug = apply_filters( 'wtf__header_tpl_slug', 'site_header');
-		$wtf__header_tpl_name = apply_filters( 'wtf__header_tpl_name', null);
+		$wtf__header_tpl_name = apply_filters( 'wtf__header_tpl_name', NULL);
 		get_template_part( "template-parts/headers/{$wtf__header_tpl_slug}", $wtf__header_tpl_name );
 	}
 endif;
@@ -92,7 +92,7 @@ if ( ! function_exists( 'wtf__the_footer' ) ) :
 	 */
 	function wtf__the_footer () {
 		$wtf__footer_tpl_slug = apply_filters( 'wtf__footer_tpl_slug', 'site_footer');
-		$wtf__footer_tpl_name = apply_filters( 'wtf__footer_tpl_name', null);
+		$wtf__footer_tpl_name = apply_filters( 'wtf__footer_tpl_name', NULL);
 		get_template_part( "template-parts/footers/{$wtf__footer_tpl_slug}", $wtf__footer_tpl_name );
 	}
 endif;
@@ -109,7 +109,7 @@ if ( ! function_exists( 'wtf__the_nav_menu' ) ) :
 		if ( 'social--primary' === $menu_name ) {
 			wp_nav_menu(
 				array(
-					'container' => null,
+					'container' => NULL,
 					'depth' => 1,
 					'menu_class' => 'social-links-menu',
 					'theme_location' => 'social--primary',
@@ -119,7 +119,7 @@ if ( ! function_exists( 'wtf__the_nav_menu' ) ) :
 		elseif ( 'site--primary' === $menu_name ) {
 			wp_nav_menu(
 				array(
-					'container' => null,
+					'container' => NULL,
 					'menu_class' => 'navbar-nav',
 					'theme_location' => 'site--primary',
 				)
@@ -193,7 +193,7 @@ if ( ! function_exists( 'wtf__the_featured_image' ) ) :
 			</div>
 		<?php
 		else :
-			$post_title = the_title_attribute( array( 'echo' => False ) );
+			$post_title = the_title_attribute( array( 'echo' => FALSE ) );
 		?>
 			<a class="link link--featured-image" href="<?php the_permalink(); ?>" aria-hidden="true">
 				<?php the_post_thumbnail( 'post-thumbnail', array( 'alt' => $post_title ) ); ?>
@@ -495,7 +495,7 @@ if ( ! function_exists( 'wtf__the_wp_post_comments' ) ) :
 	 */
 	function wtf__the_wp_post_comments () {
 		$wtf__wp_post_comments_tpl_slug = apply_filters( 'wtf__wp_post_comments_tpl_slug', 'wp_post_comments');
-		$wtf__wp_post_comments_tpl_name = apply_filters( 'wtf__wp_post_comments_tpl_name', null);
+		$wtf__wp_post_comments_tpl_name = apply_filters( 'wtf__wp_post_comments_tpl_name', NULL);
 		get_template_part( "template-parts/components/{$wtf__wp_post_comments_tpl_slug}", $wtf__wp_post_comments_tpl_name );
 	}
 endif;

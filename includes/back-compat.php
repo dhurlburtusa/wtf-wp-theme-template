@@ -57,7 +57,7 @@ function wtf__customize () {
 		sprintf( __( 'WTF requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again.', 'wtf' ), $GLOBALS['wp_version'] ),
 		'',
 		array(
-			'back_link' => true,
+			'back_link' => TRUE,
 		)
 	);
 }

@@ -303,7 +303,7 @@ if ( $set_up_theme ) :
 			// Block styles.
 			wp_enqueue_style( 'wtf-block-editor-style', get_template_directory_uri() . '/assets/styles/editor-blocks.css', array(), '20181230' );
 			// Add custom fonts.
-			wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), null );
+			wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), NULL );
 		}
 	endif;
 	add_action( 'enqueue_block_editor_assets', 'wtf__action__enqueue_block_editor_assets' );
@@ -478,7 +478,7 @@ if ( $set_up_theme ) :
 					}
 
 					// Add custom fonts, used in the main stylesheet.
-					// wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), null );
+					// wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), NULL );
 
 					// Theme block stylesheet.
 					// wp_enqueue_style( 'wtf-block-style', get_template_directory_uri() . '/assets/styles/blocks.css', array( 'wtf-style' ), '20181230' );
@@ -504,7 +504,7 @@ if ( $set_up_theme ) :
 					// wp_enqueue_script( 'wtf-html5', get_template_directory_uri() . '/assets/scripts/html5.js', array(), '3.7.3' );
 					// wp_script_add_data( 'wtf-html5', 'conditional', 'lt IE 9' );
 
-					wp_enqueue_script( 'wtf-skip-link-focus-fix', get_template_directory_uri() . '/assets/scripts/skip-link-focus-fix.js', array(), '20160816', true );
+					wp_enqueue_script( 'wtf-skip-link-focus-fix', get_template_directory_uri() . '/assets/scripts/skip-link-focus-fix.js', array(), '20160816', TRUE );
 
 					if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 						wp_enqueue_script( 'comment-reply' );
@@ -515,8 +515,8 @@ if ( $set_up_theme ) :
 						wp_enqueue_script( 'wtf-keyboard-attachment-navigation', get_template_directory_uri() . '/assets/scripts/keyboard-attachment-navigation.js', array(), '20160816' );
 					}
 
-					// wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array( 'jquery' ), '20181230', true );
-					// wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array(), '20181230', true );
+					// wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array( 'jquery' ), '20181230', TRUE );
+					// wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array(), '20181230', TRUE );
 
 					// TODO: Better understand what wp_localize_script is for and how to properly use it.
 					// wp_localize_script(

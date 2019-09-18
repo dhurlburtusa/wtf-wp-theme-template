@@ -1,8 +1,8 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 
-$wtf__document_head_tpl_name = apply_filters( 'wtf__document_head_tpl_name', null);
-$wtf__document_body_tpl_name = apply_filters( 'wtf__document_body_tpl_name', null);
+$wtf__document_head_tpl_name = apply_filters( 'wtf__document_head_tpl_name', NULL);
+$wtf__document_body_tpl_name = apply_filters( 'wtf__document_body_tpl_name', NULL);
 ?>
 <!DOCTYPE html>
 <html <?php wtf__the_head_tag_attrs(); ?>>

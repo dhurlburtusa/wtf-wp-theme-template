@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 <div class="pg">
 	<div class="pg__head">
 		<?php
-		$wtf__page_header_tpl_name = apply_filters( 'wtf__page_header_tpl_name', null);
+		$wtf__page_header_tpl_name = apply_filters( 'wtf__page_header_tpl_name', NULL);
 		get_header( $wtf__page_header_tpl_name );
 		?>
 	</div>
@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) { http_response_code(404); die(); }
 
 	<div class="pg__foot">
 		<?php
-		$wtf__page_footer_tpl_name = apply_filters( 'wtf__page_footer_tpl_name', null);
+		$wtf__page_footer_tpl_name = apply_filters( 'wtf__page_footer_tpl_name', NULL);
 		get_footer( $wtf__page_footer_tpl_name );
 		?>
 	</div>

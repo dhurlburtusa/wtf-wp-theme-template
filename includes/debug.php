@@ -1,6 +1,6 @@
 <?php
 /*
-This file is executed when `WP_DEBUG` is set to `true`.
+This file is executed when `WP_DEBUG` is set to `TRUE`.
 */
 
 add_action( 'wtf__debug', function () {
