@@ -410,19 +410,29 @@ if ( $set_up_theme ) :
 
 			/**
 			 * Add the charset meta tag to the document head.
+			 *
+			 * It is recommended that the charset meta tag is one of the first two tags in the
+			 * HTML head.
+			 *
+			 * See https://htmlhead.dev/.
 			 */
 			function wtf__action__wp_head__add_charset_meta () {
 				echo '<meta charset="' . esc_attr( get_bloginfo( 'charset' ) ) . '">' . "\n";
 			}
-			add_action( 'wp_head', 'wtf__action__wp_head__add_charset_meta', 1 );
+			add_action( 'wp_head', 'wtf__action__wp_head__add_charset_meta', 0 );
 
 			/**
 			 * Add the viewport meta tag to the document head.
+			 *
+			 * It is recommended that the viewport meta tag is one of the first two tags in the
+			 * HTML head.
+			 *
+			 * See https://htmlhead.dev/.
 			 */
 			function wtf__action__wp_head__add_viewport_meta () {
 				echo '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
 			}
-			add_action( 'wp_head', 'wtf__action__wp_head__add_viewport_meta', 1 );
+			add_action( 'wp_head', 'wtf__action__wp_head__add_viewport_meta', 0 );
 
 			/**
 			 * Adds the profile link to the document head.
@@ -474,7 +484,6 @@ if ( $set_up_theme ) :
 							// Theme stylesheet.
 							wp_enqueue_style( 'wtf-style', get_template_directory_uri() . "/assets/styles/{$bones_css}", array(), NULL );
 						}
-
 					}
 
 					// Add custom fonts, used in the main stylesheet.
