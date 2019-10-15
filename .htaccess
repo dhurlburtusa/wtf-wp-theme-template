@@ -1,0 +1,35 @@
+<Files "package-lock.json">
+	Require all denied
+</Files>
+
+<Files "package.json">
+	Require all denied
+</Files>
+
+<Files "README.md">
+	Require all denied
+</Files>
+
+<Files "readme.txt">
+	Require all denied
+</Files>
+
+<FilesMatch "^\.">
+	Redirect 404
+</FilesMatch>
+
+<FilesMatch "\.disabled$">
+	Redirect 404
+</FilesMatch>
+
+<FilesMatch "\.config\.js$">
+	Redirect 404
+</FilesMatch>
+
+<FilesMatch "\.php$">
+	Redirect 404
+</FilesMatch>
+
+<FilesMatch "\.scss$">
+	Redirect 404
+</FilesMatch>
