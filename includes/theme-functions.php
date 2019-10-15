@@ -63,7 +63,7 @@ function wtf__get_default_theme_support () {
 		// @param {NULL|TRUE|FALSE} - Enables/disables editor styles.
 		'editor-styles' => NULL,
 
-		// @param {NULL|FALSE|Array<'caption'|'comment-form'|'comment-list'|'gallery'|'search-form'>} -
+		// @param {NULL|FALSE|Array<'caption'|'comment-form'|'comment-list'|'gallery'|'script'|'search-form'|'style'>} -
 		// 	Sets which components should use HTML5 markup. `FALSE` will disable all
 		// 	components from using HTML5. Defaults to using HTML5 for all components.
 		'html5' => array(
@@ -71,7 +71,9 @@ function wtf__get_default_theme_support () {
 			'comment-form',
 			'comment-list',
 			'gallery',
+			'script',
 			'search-form',
+			'style',
 		),
 
 		// @param {NULL|FALSE|Array<String, String>} -
