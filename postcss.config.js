@@ -1,7 +1,7 @@
 module.exports = (ctx) => {
-  const { cwd, env, file, options } = ctx;
-  const { basename, dirname, extname } = file;
-  const { map, parser, stringifier, syntax } = options;
+  const { /* cwd, */ env, /* file, */ options } = ctx
+  // const { basename, dirname, extname } = file
+  // const { map, parser, stringifier, syntax } = options
   return {
     ...options,
     // Needed to allow parsing of inline comments (i.e. //) in .scss files.
@@ -223,7 +223,7 @@ module.exports = (ctx) => {
               // zindex: {
               //   exclude: true,
               // },
-            }
+            },
           ],
         })
         : null,
@@ -235,5 +235,5 @@ module.exports = (ctx) => {
         trim: 16,
       }),
     ].filter(Boolean),
-  };
-};
+  }
+}

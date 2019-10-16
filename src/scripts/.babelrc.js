@@ -5,7 +5,7 @@
  * See https://babeljs.io/docs/en/config-files#file-relative-configuration for
  * details.
  */
-module.exports = function createBabelConfig(api) {
+module.exports = function createBabelConfig (api) {
   // console.log('src/scripts/.babelrc.js#createBabelConfig')
   api.cache(true)
 

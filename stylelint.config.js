@@ -38,7 +38,7 @@ const config = {
     'block-opening-brace-newline-after': 'always-multi-line',
     'color-named': null,
     'comment-empty-line-before': null,
-    'indentation': 'tab',
+    indentation: 'tab',
     'max-empty-lines': 2,
     'max-line-length': null,
     // When using Autoprefixer, no need to use prefixes in source.
@@ -78,6 +78,6 @@ const config = {
     // 'scss/selector-nest-combinators': 'always',
     'scss/selector-no-redundant-nesting-selector': true,
   },
-};
+}
 
-module.exports = config;
+module.exports = config

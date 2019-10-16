@@ -3,7 +3,7 @@ const path = require('path')
 
 const TerserPlugin = require('terser-webpack-plugin')
 // const webpack = require('webpack')
-const WebpackAssetsManifest = require('webpack-assets-manifest');
+const WebpackAssetsManifest = require('webpack-assets-manifest')
 
 const defaultRuntimeEnv = 'production'
 
@@ -37,7 +37,7 @@ const configFactory = (env = {}, argv) => {
   ensureEnv({ runtimeEnv })
 
   // Source maps are resource heavy and can cause out of memory issue for large source files.
-  const generateSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+  const generateSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
 
   const settings = {
     generateSourceMap,
@@ -510,8 +510,8 @@ const configFactory = (env = {}, argv) => {
         // Filter out *.map files. We don't need them.
         customize: ({ key, value }) => {
           // You can prevent adding items to the manifest by returning false.
-          if (key.toLowerCase().endsWith('.map')) return false;
-          return { key, value };
+          if (key.toLowerCase().endsWith('.map')) return false
+          return { key, value }
         },
       }),
     ]
@@ -543,9 +543,9 @@ const configFactory = (env = {}, argv) => {
   })
 }
 
-function ensureEnv({ runtimeEnv }) {
-  process.env.BABEL_ENV = process.env.BABEL_ENV || runtimeEnv;
-  process.env.NODE_ENV = process.env.NODE_ENV || runtimeEnv;
+function ensureEnv ({ runtimeEnv }) {
+  process.env.BABEL_ENV = process.env.BABEL_ENV || runtimeEnv
+  process.env.NODE_ENV = process.env.NODE_ENV || runtimeEnv
 }
 
 module.exports = configFactory
