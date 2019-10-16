@@ -513,7 +513,7 @@ if ( $set_up_theme ) :
 					// wp_enqueue_script( 'wtf-html5', get_template_directory_uri() . '/assets/scripts/html5.js', array(), '3.7.3' );
 					// wp_script_add_data( 'wtf-html5', 'conditional', 'lt IE 9' );
 
-					$script_assets_manifest = wtf_child__get_script_assets_manifest();
+					$script_assets_manifest = wtf__get_script_assets_manifest();
 
 					if ( ! is_null( $script_assets_manifest ) ) {
 						$js_info = $script_assets_manifest['runtime-main.js'];
