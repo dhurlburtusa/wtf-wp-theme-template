@@ -475,14 +475,14 @@ if ( $set_up_theme ) :
 				function wtf__action__wp_enqueue_scripts() {
 					// error_log( 'wtf__action__wp_enqueue_scripts' );
 
-					$manifest = wtf__get_style_asset_manifest();
+					$style_assets_manifest = wtf__get_style_assets_manifest();
 
-					if ( ! is_null( $manifest ) ) {
-						$bones_css = $manifest['bones.css'];
+					if ( ! is_null( $style_assets_manifest ) ) {
+						$css = $style_assets_manifest['bones.css'];
 
-						if ( ! is_null( $bones_css ) ) {
+						if ( ! is_null( $css ) ) {
 							// Theme stylesheet.
-							wp_enqueue_style( 'wtf-style', get_template_directory_uri() . "/assets/styles/{$bones_css}", array(), NULL );
+							wp_enqueue_style( 'wtf-style', get_template_directory_uri() . "/assets/styles/{$css}", array(), NULL );
 						}
 					}
 
@@ -512,6 +512,34 @@ if ( $set_up_theme ) :
 					// Load the html5 shiv.
 					// wp_enqueue_script( 'wtf-html5', get_template_directory_uri() . '/assets/scripts/html5.js', array(), '3.7.3' );
 					// wp_script_add_data( 'wtf-html5', 'conditional', 'lt IE 9' );
+
+					$script_assets_manifest = wtf_child__get_script_assets_manifest();
+
+					if ( ! is_null( $script_assets_manifest ) ) {
+						$js = $script_assets_manifest['runtime-main.js'];
+
+						if ( ! is_null( $js ) ) {
+							wp_enqueue_script(
+								'wtf-runtime-main-js',
+								get_theme_file_uri( "assets/scripts/{$js}" ),
+								array(),
+								NULL,
+								TRUE
+							);
+						}
+
+						$js = $script_assets_manifest['main.js'];
+
+						if ( ! is_null( $js ) ) {
+							wp_enqueue_script(
+								'wtf-main-js',
+								get_theme_file_uri( "assets/scripts/{$js}" ),
+								array(),
+								NULL,
+								TRUE
+							);
+						}
+					}
 
 					wp_enqueue_script( 'wtf-skip-link-focus-fix', get_template_directory_uri() . '/assets/scripts/skip-link-focus-fix.js', array(), '20160816', TRUE );
 
