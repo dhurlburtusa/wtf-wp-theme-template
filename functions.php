@@ -516,24 +516,24 @@ if ( $set_up_theme ) :
 					$script_assets_manifest = wtf_child__get_script_assets_manifest();
 
 					if ( ! is_null( $script_assets_manifest ) ) {
-						$js = $script_assets_manifest['runtime-main.js'];
+						$js_info = $script_assets_manifest['runtime-main.js'];
 
-						if ( ! is_null( $js ) ) {
+						if ( ! is_null( $js_info ) ) {
 							wp_enqueue_script(
 								'wtf-runtime-main-js',
-								get_theme_file_uri( "assets/scripts/{$js}" ),
+								get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
 								array(),
 								NULL,
 								TRUE
 							);
 						}
 
-						$js = $script_assets_manifest['main.js'];
+						$js_info = $script_assets_manifest['main.js'];
 
-						if ( ! is_null( $js ) ) {
+						if ( ! is_null( $js_info ) ) {
 							wp_enqueue_script(
 								'wtf-main-js',
-								get_theme_file_uri( "assets/scripts/{$js}" ),
+								get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
 								array(),
 								NULL,
 								TRUE

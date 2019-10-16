@@ -513,6 +513,7 @@ const configFactory = (env = {}, argv) => {
           if (key.toLowerCase().endsWith('.map')) return false
           return { key, value }
         },
+        integrity: true,
       }),
     ]
 

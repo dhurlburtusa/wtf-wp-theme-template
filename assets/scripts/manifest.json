@@ -1,4 +1,10 @@
 {
-  "main.js": "main.5fec5396533e6aeb4d96.chunk.js",
-  "runtime-main.js": "runtime-main.167fde889f84f719493f.js"
+  "main.js": {
+    "src": "main.5fec5396533e6aeb4d96.chunk.js",
+    "integrity": "sha256-KGOWYb3SsAzEqcmnVmNQUfPqaC3hT3EXLn9tG472Pno= sha384-7nsSQm3ePO9LBC6ut4O1ufLvAfLNA3HiSGV23Iua1w/DaohW54aT6UwqeZ0u5S8u sha512-KtCzGmb3xOdkOx3nwWZeZplR+2saK5q8SAwt+I45c1WqSqG6a43OlPCre4MLn4QqsJJaSjoBbzUeTymK3HCMrQ=="
+  },
+  "runtime-main.js": {
+    "src": "runtime-main.167fde889f84f719493f.js",
+    "integrity": "sha256-H6lc1gnRE00ga45LhLwpyc/H5p46DzHvuklIPZYnQZQ= sha384-dNMLDXIRXB+3URRBZFEpXLeoDz3WBSvo/qgD8rGf+SsmRGJ3NyntY18drER2llXt sha512-otD5fNghCVaQjhTvsfNeG21zbU/8/9Y6myWlfWnLIkS1f7XXF0lGg3xztHBA2/yKgNITkIIPQGuaKzmKoAzTgA=="
+  }
 }
