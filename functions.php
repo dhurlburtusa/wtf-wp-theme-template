@@ -475,16 +475,7 @@ if ( $set_up_theme ) :
 				function wtf__action__wp_enqueue_scripts() {
 					// error_log( 'wtf__action__wp_enqueue_scripts' );
 
-					$style_assets_manifest = wtf__get_style_assets_manifest();
-
-					if ( ! is_null( $style_assets_manifest ) ) {
-						$css = $style_assets_manifest['bones.css'];
-
-						if ( ! is_null( $css ) ) {
-							// Theme stylesheet.
-							wp_enqueue_style( 'wtf-style', get_template_directory_uri() . "/assets/styles/{$css}", array(), NULL );
-						}
-					}
+					wp_enqueue_style( 'wtf-style' );
 
 					// Add custom fonts, used in the main stylesheet.
 					// wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), NULL );
@@ -509,51 +500,13 @@ if ( $set_up_theme ) :
 					// 	wp_enqueue_style( 'wtf-child-style', get_stylesheet_uri(), array( 'wtf-style' ) );
 					// }
 
-					// Load the html5 shiv.
-					// wp_enqueue_script( 'wtf-html5', get_template_directory_uri() . '/assets/scripts/html5.js', array(), '3.7.3' );
-					// wp_script_add_data( 'wtf-html5', 'conditional', 'lt IE 9' );
+					// wp_enqueue_script( 'wtf-html5shiv-3.7.3' );
 
-					$script_assets_manifest = wtf__get_script_assets_manifest();
-
-					if ( ! is_null( $script_assets_manifest ) ) {
-						$js_info = $script_assets_manifest['runtime-main.js'];
-
-						if ( ! is_null( $js_info ) ) {
-							wp_enqueue_script(
-								'wtf-runtime-main-js',
-								get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
-								array(),
-								NULL,
-								TRUE
-							);
-						}
-
-						$js_info = $script_assets_manifest['main.js'];
-
-						if ( ! is_null( $js_info ) ) {
-							wp_enqueue_script(
-								'wtf-main-js',
-								get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
-								array(),
-								NULL,
-								TRUE
-							);
-						}
-					}
-
-					wp_enqueue_script( 'wtf-skip-link-focus-fix', get_template_directory_uri() . '/assets/scripts/skip-link-focus-fix.js', array(), '20160816', TRUE );
+					wp_enqueue_script( 'wtf-main-js' );
 
 					if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 						wp_enqueue_script( 'comment-reply' );
 					}
-
-					if ( is_singular() && wp_attachment_is_image() ) {
-						// wp_enqueue_script( 'wtf-keyboard-attachment-navigation', get_template_directory_uri() . '/assets/scripts/keyboard-attachment-navigation.js', array( 'jquery' ), '20160816' );
-						wp_enqueue_script( 'wtf-keyboard-attachment-navigation', get_template_directory_uri() . '/assets/scripts/keyboard-attachment-navigation.js', array(), '20160816' );
-					}
-
-					// wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array( 'jquery' ), '20181230', TRUE );
-					// wp_enqueue_script( 'wtf-script', get_template_directory_uri() . '/assets/scripts/functions.js', array(), '20181230', TRUE );
 
 					// TODO: Better understand what wp_localize_script is for and how to properly use it.
 					// wp_localize_script(
@@ -711,6 +664,65 @@ if ( $set_up_theme ) :
 		}
 	endif;
 	add_action( 'wtf__document_init', 'wtf__action__wtf__document_init' );
+
+	function wtf__action__wp_head__register_scripts_and_styles () {
+
+		$style_assets_manifest = wtf__get_style_assets_manifest();
+
+		if ( ! is_null( $style_assets_manifest ) ) {
+			$css = $style_assets_manifest['bones.css'];
+
+			if ( ! is_null( $css ) ) {
+				// Theme stylesheet.
+				wp_register_style(
+					'wtf-style',
+					get_template_directory_uri() . "/assets/styles/{$css}",
+					array(),
+					NULL
+				);
+			}
+		}
+
+		// wp_register_script(
+		// 	'wtf-html5shiv-3.7.3',
+		// 	'https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js',
+		// 	array(),
+		// 	NULL
+		// );
+		// wp_script_add_data( 'wtf-html5shiv-3.7.3', 'conditional', 'lt IE 9' );
+
+		$script_assets_manifest = wtf__get_script_assets_manifest();
+		$script_assets_manifest = wtf__get_script_assets_manifest();
+		$script_assets_manifest = wtf__get_script_assets_manifest();
+
+		if ( ! is_null( $script_assets_manifest ) ) {
+			$js_info = $script_assets_manifest['runtime.js'];
+
+			if ( ! is_null( $js_info ) ) {
+				wp_register_script(
+					'wtf-webpack-runtime-js',
+					get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
+					array(),
+					NULL,
+					TRUE
+				);
+			}
+
+			$js_info = $script_assets_manifest['main.js'];
+
+			if ( ! is_null( $js_info ) ) {
+				wp_register_script(
+					'wtf-main-js',
+					get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
+					array( 'jquery', 'wtf-webpack-runtime-js' ),
+					NULL,
+					TRUE
+				);
+			}
+		}
+
+	}
+	add_action( 'wp_head', 'wtf__action__wp_head__register_scripts_and_styles', 0 );
 
 endif; // eo if ( $set_up_theme )
 

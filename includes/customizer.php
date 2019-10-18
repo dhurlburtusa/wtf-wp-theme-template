@@ -487,8 +487,22 @@ function wtf__color_scheme_css () {
  * @since WTF 0.0.0-alpha
  */
 function wtf__customize_control_js () {
-	wp_enqueue_script( 'color-scheme-control', get_template_directory_uri() . '/assets/scripts/color-scheme-control.js', array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20160816', TRUE );
-	wp_localize_script( 'color-scheme-control', 'colorScheme', wtf__get_color_schemes() );
+	$script_assets_manifest = wtf__get_script_assets_manifest();
+
+	if ( ! is_null( $script_assets_manifest ) ) {
+		$js_info = $script_assets_manifest['wtf-color-scheme-control.js'];
+
+		if ( ! is_null( $js_info ) ) {
+			wp_enqueue_script(
+				'wtf-color-scheme-control',
+				get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
+				array( 'customize-controls', 'iris', 'underscore', 'wp-util' ),
+				'20160816',
+				TRUE
+			);
+			wp_localize_script( 'wtf-color-scheme-control', 'colorScheme', wtf__get_color_schemes() );
+		}
+	}
 }
 add_action( 'customize_controls_enqueue_scripts', 'wtf__customize_control_js' );
 
@@ -498,7 +512,21 @@ add_action( 'customize_controls_enqueue_scripts', 'wtf__customize_control_js' );
  * @since WTF 0.0.0-alpha
  */
 function wtf__customize_preview_js () {
-	wp_enqueue_script( 'wtf-customize-preview', get_template_directory_uri() . '/assets/scripts/customize-preview.js', array( 'customize-preview' ), '20160816', TRUE );
+	$script_assets_manifest = wtf__get_script_assets_manifest();
+
+	if ( ! is_null( $script_assets_manifest ) ) {
+		$js_info = $script_assets_manifest['wtf-customize-preview.js'];
+
+		if ( ! is_null( $js_info ) ) {
+			wp_enqueue_script(
+				'wtf-customize-preview',
+				get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
+				array( 'customize-preview' ),
+				'20160816',
+				TRUE
+			);
+		}
+	}
 }
 add_action( 'customize_preview_init', 'wtf__customize_preview_js' );
 

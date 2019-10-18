@@ -66,8 +66,13 @@ const configFactory = (env = {}, argv) => {
     //   chunk1: './chunk1-entry.js',
     //   chunk2: ['./polyfill.js', './chunk2-entry.js'],
     // }
+    // Keep in mind that if there are any duplicated modules between entry chunks they
+    // will be included in both bundles. The `optimization.splitChunks` configuration
+    // can be used to extract common modules.
     const entry = {
       main: ['./index.js'],
+      'wtf-color-scheme-control': ['./wtf-color-scheme-control.js'],
+      'wtf-customize-preview': ['./wtf-customize-preview.js'],
     }
 
     const externals = undefined
@@ -484,6 +489,7 @@ const configFactory = (env = {}, argv) => {
           },
         }),
       ],
+      moduleIds: 'hashed',
       // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985
       // https://github.com/facebook/create-react-app/issues/5358

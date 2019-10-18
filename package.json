@@ -78,13 +78,7 @@
     "@comment clean": "Removes all the project's generated files.",
     "clean": "npm-run-all --parallel clean:*",
     "clean:assets": "npm-run-all --parallel clean:assets:*",
-    "@comment clean:assets:scripts": [
-      "TODO: Replace",
-      "`assets/scripts/main.*.{chunk.js,LICENSE,map} assets/scripts/runtime.*.{js,LICENSE,map}`",
-      "with `assets/scripts/*.{js,LICENSE,map}` once the remaining scripts are migrated",
-      "to the `src/scripts` directory."
-    ],
-    "clean:assets:scripts": "rimraf assets/scripts/main.*.{chunk.js,LICENSE,map} assets/scripts/runtime.*.{js,LICENSE,map} node_modules/.cache/babel-loader/ node_modules/.cache/terser-webpack-plugin/",
+    "clean:assets:scripts": "rimraf assets/scripts/*.{js,LICENSE,map} node_modules/.cache/babel-loader/ node_modules/.cache/terser-webpack-plugin/",
     "clean:assets:styles": "rimraf assets/styles/*.{css,map}",
     "precommit": "lint-staged",
     "postinstall": "npm run build",
