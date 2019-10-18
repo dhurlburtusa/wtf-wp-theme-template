@@ -27,6 +27,7 @@ const configFactory = (env = {}, argv) => {
 
   const debug = env.debug || false
 
+  const CACHE_DIR = path.resolve(__dirname, '.cache')
   const SRC_DIR = path.resolve(__dirname, 'src', 'scripts')
   const DEST_DIR = path.resolve(__dirname, 'assets', 'scripts')
 
@@ -101,51 +102,59 @@ const configFactory = (env = {}, argv) => {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
         include: context,
       },
-      use: {
-        loader: require.resolve('babel-loader'),
-        options: {
-          // babel-loader Options:
-          // ---------------------
-
-          // See create-react-app#6846 for context on why cacheCompression is disabled
-          cacheCompression: false,
-          // This is a feature of `babel-loader` for webpack (not Babel itself).
-          // It enables caching results in ./node_modules/.cache/babel-loader/
-          // directory for faster rebuilds.
-          cacheDirectory: true,
-          // customize: require.resolve(
-          //   'babel-preset-react-app/webpack-overrides'
-          // ),
-
-          // babel Options:
-          // --------------
-
-          // TODO: Test how setting `compact` to true affects TerserPlugin. I am hoping that we can set this to false since we are relying on Terser to do compression.
-          // compact: settings.isEnvProduction,
-          // plugins: [
-          //   // [
-          //   //   require.resolve('babel-plugin-named-asset-import'),
-          //   //   {
-          //   //     loaderMap: {
-          //   //       svg: {
-          //   //         ReactComponent:
-          //   //           '@svgr/webpack?-svgo,+titleProp,+ref![path]',
-          //   //       },
-          //   //     },
-          //   //   },
-          //   // ],
-          // ],
-          // presets: [
-          //   // require.resolve('@babel/preset-env'),
-          //   require.resolve('@babel/preset-react'),
-          //   require.resolve('@babel/preset-typescript'),
-          // ],
-          // Setting `rootMode` to `'upward'` allows the `babel.config.js` project-wide Babel
-          // configuration to be found if the current working directory is not the
-          // repository's root.
-          // rootMode: 'upward',
+      use: [
+        {
+          loader: 'cache-loader',
+          options: {
+            cacheDirectory: CACHE_DIR,
+          },
         },
-      },
+        {
+          loader: require.resolve('babel-loader'),
+          options: {
+            // babel-loader Options:
+            // ---------------------
+
+            // See create-react-app#6846 for context on why cacheCompression is disabled
+            cacheCompression: false,
+            // This is a feature of `babel-loader` for webpack (not Babel itself).
+            // It enables caching results in ./node_modules/.cache/babel-loader/
+            // directory for faster rebuilds.
+            cacheDirectory: true,
+            // customize: require.resolve(
+            //   'babel-preset-react-app/webpack-overrides'
+            // ),
+
+            // babel Options:
+            // --------------
+
+            // TODO: Test how setting `compact` to true affects TerserPlugin. I am hoping that we can set this to false since we are relying on Terser to do compression.
+            // compact: settings.isEnvProduction,
+            // plugins: [
+            //   // [
+            //   //   require.resolve('babel-plugin-named-asset-import'),
+            //   //   {
+            //   //     loaderMap: {
+            //   //       svg: {
+            //   //         ReactComponent:
+            //   //           '@svgr/webpack?-svgo,+titleProp,+ref![path]',
+            //   //       },
+            //   //     },
+            //   //   },
+            //   // ],
+            // ],
+            // presets: [
+            //   // require.resolve('@babel/preset-env'),
+            //   require.resolve('@babel/preset-react'),
+            //   require.resolve('@babel/preset-typescript'),
+            // ],
+            // Setting `rootMode` to `'upward'` allows the `babel.config.js` project-wide Babel
+            // configuration to be found if the current working directory is not the
+            // repository's root.
+            // rootMode: 'upward',
+          },
+        },
+      ],
     }
 
     // "file" loader makes sure those assets get served by WebpackDevServer.
