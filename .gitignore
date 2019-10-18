@@ -16,8 +16,10 @@
 /.cache/
 /assets/scripts/*.js
 /assets/scripts/*.js.map
+/assets/scripts/*.json
 /assets/styles/*.css
 /assets/styles/*.css.map
+/assets/styles/*.json
 /build/
 /dist/
 /lib/
