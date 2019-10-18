@@ -117,24 +117,28 @@ function wtf__get_default_theme_support () {
 }
 
 function wtf__get_script_assets_manifest () {
-	$manifest = NULL;
+	static $manifest = NULL;
 
-	$manifest_json = file_get_contents( get_template_directory_uri() . '/assets/scripts/manifest.json' );
+	if ( is_null( $manifest ) ) {
+		$manifest_json = file_get_contents( get_template_directory_uri() . '/assets/scripts/manifest.json' );
 
-	if ( ! $manifest_json === FALSE ) {
-		$manifest = json_decode( $manifest_json, TRUE );
+		if ( ! $manifest_json === FALSE ) {
+			$manifest = json_decode( $manifest_json, TRUE );
+		}
 	}
 
 	return $manifest;
 }
 
 function wtf__get_style_assets_manifest () {
-	$manifest = NULL;
+	static $manifest = NULL;
 
-	$manifest_json = file_get_contents( get_template_directory_uri() . '/assets/styles/manifest.json' );
+	if ( is_null( $manifest ) ) {
+		$manifest_json = file_get_contents( get_template_directory_uri() . '/assets/styles/manifest.json' );
 
-	if ( ! $manifest_json === FALSE ) {
-		$manifest = json_decode( $manifest_json, TRUE );
+		if ( ! $manifest_json === FALSE ) {
+			$manifest = json_decode( $manifest_json, TRUE );
+		}
 	}
 
 	return $manifest;
