@@ -27,7 +27,7 @@ const configFactory = (env = {}, argv) => {
 
   const debug = env.debug || false
 
-  const CACHE_DIR = path.resolve(__dirname, '.cache')
+  // const CACHE_DIR = path.resolve(__dirname, '.cache')
   const SRC_DIR = path.resolve(__dirname, 'src', 'scripts')
   const DEST_DIR = path.resolve(__dirname, 'assets', 'scripts')
 
@@ -106,7 +106,7 @@ const configFactory = (env = {}, argv) => {
         {
           loader: 'cache-loader',
           options: {
-            cacheDirectory: CACHE_DIR,
+            // cacheDirectory: CACHE_DIR,
           },
         },
         {
@@ -120,7 +120,8 @@ const configFactory = (env = {}, argv) => {
             // This is a feature of `babel-loader` for webpack (not Babel itself).
             // It enables caching results in ./node_modules/.cache/babel-loader/
             // directory for faster rebuilds.
-            cacheDirectory: true,
+            // cacheDirectory: false, // The default value.
+            // cacheDirectory: true,
             // customize: require.resolve(
             //   'babel-preset-react-app/webpack-overrides'
             // ),

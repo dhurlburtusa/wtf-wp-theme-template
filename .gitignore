@@ -13,7 +13,6 @@
 .coveralls.yml
 
 # Build/Deployment
-/.cache/
 /assets/scripts/*.js
 /assets/scripts/*.js.map
 /assets/scripts/*.json
