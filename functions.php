@@ -692,8 +692,6 @@ if ( $set_up_theme ) :
 		// wp_script_add_data( 'wtf-html5shiv-3.7.3', 'conditional', 'lt IE 9' );
 
 		$script_assets_manifest = wtf__get_script_assets_manifest();
-		$script_assets_manifest = wtf__get_script_assets_manifest();
-		$script_assets_manifest = wtf__get_script_assets_manifest();
 
 		if ( ! is_null( $script_assets_manifest ) ) {
 			$js_info = $script_assets_manifest['runtime.js'];
