@@ -16,6 +16,7 @@ module.exports = {
       objects: 'always-multiline',
     }],
     'no-multiple-empty-lines': ['error', { max: 2, maxBOF: 1, maxEOF: 1 }],
+    'no-var': ['error'],
     'padded-blocks': ['off'],
   },
 }

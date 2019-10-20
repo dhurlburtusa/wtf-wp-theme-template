@@ -95,7 +95,7 @@
       "The !**/.* allows files beginning with a dot to not be ignored. That is, they",
       "are also subject to linting."
     ],
-    "lint:scripts": "eslint --ignore-path .eslintignore --ignore-pattern \"!**/.*\" .",
+    "lint:scripts": "eslint --ignore-path .eslintignore --ignore-pattern \"!**/.*\" --ext .cjs,.js,.jsx,.mjs,.ts,.tsx .",
     "start": "npm-run-all --parallel watch:assets:* browsersync",
     "test": "npm run test:unit",
     "test:coverage": "npm run test:unit --coverage",
