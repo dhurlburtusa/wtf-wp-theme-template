@@ -148,7 +148,7 @@ function wtf__get_script_assets_manifest () {
 	static $manifest = NULL;
 
 	if ( is_null( $manifest ) ) {
-		$manifest_json = file_get_contents( get_template_directory_uri() . '/assets/scripts/manifest.json' );
+		$manifest_json = file_get_contents( get_template_directory() . '/assets/scripts/manifest.json' );
 
 		if ( ! $manifest_json === FALSE ) {
 			$manifest = json_decode( $manifest_json, TRUE );
@@ -181,7 +181,7 @@ function wtf__get_style_assets_manifest () {
 	static $manifest = NULL;
 
 	if ( is_null( $manifest ) ) {
-		$manifest_json = file_get_contents( get_template_directory_uri() . '/assets/styles/manifest.json' );
+		$manifest_json = file_get_contents( get_template_directory() . '/assets/styles/manifest.json' );
 
 		if ( ! $manifest_json === FALSE ) {
 			$manifest = json_decode( $manifest_json, TRUE );
