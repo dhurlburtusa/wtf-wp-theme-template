@@ -699,7 +699,7 @@ if ( $set_up_theme ) :
 			if ( ! is_null( $js_info ) ) {
 				wp_register_script(
 					'wtf-webpack-runtime-js',
-					get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
+					get_template_directory_uri() . "/assets/scripts/{$js_info['src']}",
 					array(),
 					NULL,
 					TRUE
@@ -711,7 +711,7 @@ if ( $set_up_theme ) :
 			if ( ! is_null( $js_info ) ) {
 				wp_register_script(
 					'wtf-main-js',
-					get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
+					get_template_directory_uri() . "/assets/scripts/{$js_info['src']}",
 					array( 'jquery', 'wtf-webpack-runtime-js' ),
 					NULL,
 					TRUE

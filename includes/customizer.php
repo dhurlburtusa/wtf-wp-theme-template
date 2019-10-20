@@ -495,7 +495,7 @@ function wtf__customize_control_js () {
 		if ( ! is_null( $js_info ) ) {
 			wp_enqueue_script(
 				'wtf-color-scheme-control',
-				get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
+				get_template_directory_uri() . "/assets/scripts/{$js_info['src']}",
 				array( 'customize-controls', 'iris', 'underscore', 'wp-util' ),
 				'20160816',
 				TRUE
@@ -520,7 +520,7 @@ function wtf__customize_preview_js () {
 		if ( ! is_null( $js_info ) ) {
 			wp_enqueue_script(
 				'wtf-customize-preview',
-				get_theme_file_uri( "assets/scripts/{$js_info['src']}" ),
+				get_template_directory_uri() . "/assets/scripts/{$js_info['src']}",
 				array( 'customize-preview' ),
 				'20160816',
 				TRUE
