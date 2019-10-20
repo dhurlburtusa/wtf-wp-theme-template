@@ -116,6 +116,34 @@ function wtf__get_default_theme_support () {
 	return $theme_support;
 }
 
+/**
+ * Reads and parses the script asset manifest: `assets/scripts/manifest.json`.
+ *
+ * The returned associative array looks similar to the following:
+ *
+ *     {
+ *       'main.js' => {
+ *         'integrity' => 'sha256-1a2b3c4d5e6f7g8h9i0j',
+ *         'src' => 'main.1a2b3c4d5e6f.chunk.js'
+ *       }
+ *     }
+ *
+ * The keys are the names of the source script entry points or some other scripts.
+ * The values are associative arrays with information about said script. It has an
+ * `integrity` key whose associated value can be used as the `integrity` attribute
+ * on an HTML `script` tag. It has a `src` key whose associated value is the name
+ * of the generated bundle/chunk which includes a hash that is representative of
+ * its content. When the content changes, then the hash changes. This makes it
+ * great for cache busting purposes so stale code is never served to the user. This
+ * value can also be used in the `src` attribute on an HTML `script` tag. However,
+ * it will need to be prefixed with the path to there the generated assets are
+ * stored.
+ *
+ * @since WTF 0.0.0-alpha
+ *
+ * @return array An associative array with information about the generated script
+ *   bundles/chunks.
+ */
 function wtf__get_script_assets_manifest () {
 	static $manifest = NULL;
 
@@ -130,6 +158,25 @@ function wtf__get_script_assets_manifest () {
 	return $manifest;
 }
 
+/**
+ * Reads and parses the style asset manifest: `assets/styles/manifest.json`.
+ *
+ * The returned associative array looks similar to the following:
+ *
+ *     {
+ *       'styles.css' => 'styles.1a2b3c4d5e6f.css'
+ *     }
+ *
+ * The keys are the names of the source style sheets. The values are the names of
+ * the generated style sheet which includes a hash that is representative of its
+ * content. When the content changes, then the hash changes. This makes it great
+ * for cache busting purposes so stale code is never served to the user.
+ *
+ * @since WTF 0.0.0-alpha
+ *
+ * @return array An associative array with information about the generated style
+ *   sheets.
+ */
 function wtf__get_style_assets_manifest () {
 	static $manifest = NULL;
 
