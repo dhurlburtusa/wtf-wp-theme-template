@@ -26,6 +26,8 @@
 	Redirect 404
 </FilesMatch>
 
+# The following is for use in WordPress themes since the PHP files are not
+# intended to be accessed directly.
 <FilesMatch "\.php$">
 	Redirect 404
 </FilesMatch>
