@@ -111,6 +111,7 @@
     "@comment watch:assets:styles": [
       "Builds the style assets and watches for style asset file changes."
     ],
-    "watch:assets:styles": "npm run build:assets:styles -- --watch"
+    "watch:assets:styles": "npm run build:assets:styles -- --watch",
+    "x-install": "npm install"
   }
 }
