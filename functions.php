@@ -45,7 +45,7 @@ if ( $set_up_theme ) :
 
 	require get_template_directory() . '/includes/polyfills.php';
 
-	require get_template_directory() . '/includes/theme-functions.php';
+	require get_template_directory() . '/vendor/wtf/theme-functions.php';
 
 	/**
 	 * Custom template tags for this theme.
