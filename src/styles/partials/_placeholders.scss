@@ -1,8 +1,16 @@
 /**
  | Placeholder Declarations:
  |
- | Also known as functional selectors. See https://jonneal.dev/specs/css-extend-rule/#functional-selector.
+ | Also known as functional selectors.
+ |
+ |     .foo {
+ |     	@extend %screen-reader-only;
+ |     }
+ |
+ | See https://jonneal.dev/specs/css-extend-rule/#functional-selector.
  ============================================================================ */
+
+@import 'custom-media';
 
 %screen-reader-only {
 	position: absolute;
@@ -13,4 +21,28 @@
 	padding: 0;
 	overflow: hidden;
 	white-space: nowrap;
+}
+
+%viewport-restricted {
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	width: 100%;
+
+	@media (--sm-viewport) {
+		max-width: 540px;
+	}
+
+	@media (--md-viewport) {
+		max-width: 720px;
+	}
+
+	@media (--lg-viewport) {
+		max-width: 960px;
+	}
+
+	@media (--xl-viewport) {
+		max-width: 1140px;
+	}
 }
