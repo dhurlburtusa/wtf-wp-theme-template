@@ -5,6 +5,12 @@ A WordPress theme template based on the WTF framework.
 
 ## TODOs
 
+- Migrate more theme-function.php functions.
+- Disable emojis.
+- Move the wtf__fonts_url function out of vendor/wtf.
+	+ It is not general/generic enough to be in the vendor library.
+	+ It may only be good in a specific child theme.
+
 - Remove CSS Framework specific code.
 	+ E.g., remove Bootstrap specific code.
 		* CSS Classes:
