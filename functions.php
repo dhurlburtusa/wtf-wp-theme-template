@@ -475,24 +475,26 @@ if ( $set_up_theme ) :
 				function wtf__action__wp_enqueue_scripts() {
 					// error_log( 'wtf__action__wp_enqueue_scripts' );
 
+					$tpl_dir_uri = get_template_directory_uri();
+
 					wp_enqueue_style( 'wtf-style' );
 
 					// Add custom fonts, used in the main stylesheet.
 					// wp_enqueue_style( 'wtf-fonts', wtf__fonts_url(), array(), NULL );
 
 					// Theme block stylesheet.
-					// wp_enqueue_style( 'wtf-block-style', get_template_directory_uri() . '/assets/styles/blocks.css', array( 'wtf-style' ), '20181230' );
+					// wp_enqueue_style( 'wtf-block-style', $tpl_dir_uri . '/assets/styles/blocks.css', array( 'wtf-style' ), '20181230' );
 
 					// Load the Internet Explorer specific stylesheet.
-					// wp_enqueue_style( 'wtf-ie', get_template_directory_uri() . '/assets/styles/ie.css', array( 'wtf-style' ), '20160816' );
+					// wp_enqueue_style( 'wtf-ie', $tpl_dir_uri . '/assets/styles/ie.css', array( 'wtf-style' ), '20160816' );
 					// wp_style_add_data( 'wtf-ie', 'conditional', 'lt IE 10' );
 
 					// Load the Internet Explorer 8 specific stylesheet.
-					// wp_enqueue_style( 'wtf-ie8', get_template_directory_uri() . '/assets/styles/ie8.css', array( 'wtf-style' ), '20160816' );
+					// wp_enqueue_style( 'wtf-ie8', $tpl_dir_uri . '/assets/styles/ie8.css', array( 'wtf-style' ), '20160816' );
 					// wp_style_add_data( 'wtf-ie8', 'conditional', 'lt IE 9' );
 
 					// Load the Internet Explorer 7 specific stylesheet.
-					// wp_enqueue_style( 'wtf-ie7', get_template_directory_uri() . '/assets/styles/ie7.css', array( 'wtf-style' ), '20160816' );
+					// wp_enqueue_style( 'wtf-ie7', $tpl_dir_uri . '/assets/styles/ie7.css', array( 'wtf-style' ), '20160816' );
 					// wp_style_add_data( 'wtf-ie7', 'conditional', 'lt IE 8' );
 
 					// // Child theme stylesheet
@@ -564,20 +566,6 @@ if ( $set_up_theme ) :
 			endif;
 			add_filter( 'body_class', 'wtf__filter__body_class' );
 
-			if ( ! function_exists( 'wtf__filter__nav_menu_link_attributes' ) ) :
-				function wtf__filter__nav_menu_link_attributes ( $atts, $item, $args, $depth ) {
-					// Add Bootstrap-4 `nav-link` to the link's `class` attribute.
-					if ( ! empty( $atts['class'] ) ) {
-						$atts['class'] .= ' nav-link';
-					}
-					else {
-						$atts['class'] = 'nav-link';
-					}
-					return $atts;
-				}
-			endif;
-			add_filter( 'nav_menu_link_attributes', 'wtf__filter__nav_menu_link_attributes', 10, 4);
-
 			if ( ! function_exists( 'wtf__filter__widget_tag_cloud_args' ) ) :
 				/**
 				 * Modifies tag cloud widget arguments to display all tags in the same font size
@@ -599,16 +587,27 @@ if ( $set_up_theme ) :
 			endif;
 			add_filter( 'widget_tag_cloud_args', 'wtf__filter__widget_tag_cloud_args' );
 
+			if ( ! function_exists( 'wtf__filter__nav_menu_link_attributes' ) ) :
+				function wtf__filter__nav_menu_link_attributes ( $atts, $item, $args, $depth ) {
+					// Add Bootstrap-4 `nav-link` to the link's `class` attribute.
+					if ( ! empty( $atts['class'] ) ) {
+						$atts['class'] .= ' nav-link';
+					}
+					else {
+						$atts['class'] = 'nav-link';
+					}
+					return $atts;
+				}
+			endif;
+			add_filter( 'nav_menu_link_attributes', 'wtf__filter__nav_menu_link_attributes', 10, 4);
+
 			if ( ! function_exists( 'wtf__filter__wp_nav_menu_objects' ) ) :
 				function wtf__filter__wp_nav_menu_objects ( $sorted_menu_items, $args ) {
 					// Add Bootstrap-4 `nav-item` to the menu item's `classes`.
 					foreach ( (array) $sorted_menu_items as &$menu_item ) {
-						// Assuming it is okay to mutate the menu items.
-						$menu_item->classes = [
-							'nav-item',
-							'nav-item--' . str_replace( '_', '-', $menu_item->type ),
-							'nav-item--' . $menu_item->object . '-object',
-						];
+						$menu_item->classes[] = 'nav-item';
+						$menu_item->classes[] = 'nav-item--' . str_replace( '_', '-', $menu_item->type );
+						$menu_item->classes[] = 'nav-item--' . $menu_item->object . '-object';
 						if ( $menu_item->current || $menu_item->current_item_ancestor ) {
 							$menu_item->classes[] = 'active';
 						}
@@ -667,6 +666,8 @@ if ( $set_up_theme ) :
 
 	function wtf__action__wp_head__register_scripts_and_styles () {
 
+		$tpl_dir_uri = get_template_directory_uri();
+
 		$style_assets_manifest = wtf__get_style_assets_manifest();
 
 		if ( ! is_null( $style_assets_manifest ) ) {
@@ -676,7 +677,7 @@ if ( $set_up_theme ) :
 				// Theme stylesheet.
 				wp_register_style(
 					'wtf-style',
-					get_template_directory_uri() . "/assets/styles/{$css}",
+					$tpl_dir_uri . "/assets/styles/{$css}",
 					array(),
 					NULL
 				);
@@ -699,7 +700,7 @@ if ( $set_up_theme ) :
 			if ( ! is_null( $js_info ) ) {
 				wp_register_script(
 					'wtf-webpack-runtime-js',
-					get_template_directory_uri() . "/assets/scripts/{$js_info['src']}",
+					$tpl_dir_uri . "/assets/scripts/{$js_info['src']}",
 					array(),
 					NULL,
 					TRUE
@@ -711,7 +712,7 @@ if ( $set_up_theme ) :
 			if ( ! is_null( $js_info ) ) {
 				wp_register_script(
 					'wtf-main-js',
-					get_template_directory_uri() . "/assets/scripts/{$js_info['src']}",
+					$tpl_dir_uri . "/assets/scripts/{$js_info['src']}",
 					array( 'jquery', 'wtf-webpack-runtime-js' ),
 					NULL,
 					TRUE
