@@ -1,5 +1,11 @@
 /**
  | Custom Media Declarations:
+ |
+ |     @import 'custom-media';
+ |
+ |     @media (--sm-viewport) {
+ |         ...
+ |     }
  ============================================================================ */
 
 /* Note: Using mobile-first styling. */
